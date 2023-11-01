@@ -1,0 +1,270 @@
+;; this is a little bit weird, but it's convenient
+;; the rule [:!Ca :!T1]
+;; means from command a to control 1
+;; :!Ca is keycode :a and prefix a with !C
+
+;; here's the definition
+
+;; !  | means mandatory
+;; #  | means optional
+;; C  | left_command
+;; T  | left_control
+;; O  | left_option
+;; S  | left_shift
+;; F  | fn
+;; Q  | right_command
+;; W  | right_control
+;; E  | right_option
+;; R  | right_shift
+;; P  | caps_lock
+;; !! | mandatory command + control + optional + shift (hyper)
+;; ## | optional any
+;;
+;;
+;; FROM modifiers
+;; to understand better how modifiers work in karabiner
+;; karabiner definition of mandatory and optional
+;; https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/from/modifiers/
+
+;;    | no modifier
+;;                  input key maps to output key exactly
+;;                  adding any modifier will cancel the event
+
+;; !  | mandatory
+;;                  specified modifier is removed in output (to event)
+;;                  specified modifiers must be present for event to occur
+;;                  adding any other modifier will cancel the event
+
+;; #  | optional (single)
+;;                  specified modifier is kept in output (to event)
+;;                  one (or none) of the specified modifiers must be present
+;;                  adding any other modifier will cancel the event
+
+;; ## | optional any
+;;                  specified modifier is removed in output (to event)
+;;                  specified modifiers *must* be present for event to occur
+;;                  adding any other modifier will add to output event
+;;                  (what you typically expect, additional modifiers tacked on)
+;;
+;; need to prefix C T O S F with ! or #
+;;
+;;
+;; each manipulator has a description and multiple rules
+
+;;{:des "..."                               ;; -> description
+;; :rules[
+;;          [<from>  <to>  <conditions>]    ;; -> rule 1
+;;          [<from>  <to>  <conditions>]    ;; -> rule 2
+;; ]}
+
+;; rule [:period ["period-mode" 1] nil {:afterup ["period-mode" 0] :alone :period}]
+;;       |_____| |_______________| |_| |_________________________________________|
+;;        <from>    <to>      <conditions>         <other options>
+;;
+;; karabiner docs: ;; https://pqrs.org/osx/karabiner/json.html#complex_modifications-manipulator-definition
+;; <other options> includs ~to_if_alone~, ~to_if_held_down~,~to_after_key_up~, ~to_delayed_action~ and ~parameters~.
+;;
+
+;; (custom variables) & modifiers -> Advanced
+;; https://github.com/yqrashawn/GokuRakuJoudo/blob/master/examples.org#custom-variable
+
+{:simlayer-threshold 500
+ :simlayers {:f-mode {:key :f}
+             :d-mode {:key :d}
+             :s-mode {:key :s}
+             :l-mode {:key :l}
+             :a-mode {:key :a}
+             :semicolon-mode {:key :semicolon}}
+ ;:layers {:hyper-mode {:key :tab :alone {:key :tab}}}
+ :main [{:des "useless to tilda" :rules [[:non_us_backslash :!On] 
+                                         [:!Onon_us_backslash :!Ograve_accent_and_tilde]
+                                         [:!Enon_us_backslash :!Ograve_accent_and_tilde]]}
+        {:des "f as option" :rules [[:open_bracket :!Oopen_bracket :f-mode]
+                                    [:close_bracket :!Oclose_bracket :f-mode]]}
+        {:des "d as option" :rules [[:open_bracket :!OSopen_bracket :d-mode]
+                                    [:close_bracket :!OSclose_bracket :d-mode]]}
+        {:des "caps_lock hyper mode" :rules [[:caps_lock ["hyper mode" 1] nil {:afterup ["hyper mode" 0]
+                                                                   :alone :escape}]
+                                       [:1 :!!1 ["hyper mode" 1]]
+                                       [:2 :!!2 ["hyper mode" 1]]
+                                       [:3 :!!3 ["hyper mode" 1]]
+                                       [:4 :!!4 ["hyper mode" 1]]
+                                       [:5 :!!5 ["hyper mode" 1]]
+                                       [:6 :!!6 ["hyper mode" 1]]
+                                       [:7 :!!7 ["hyper mode" 1]]
+                                       [:8 :!!8 ["hyper mode" 1]]
+                                       [:9 :!!9 ["hyper mode" 1]]
+                                       [:q :!!q ["hyper mode" 1]]
+                                       [:w :!!w ["hyper mode" 1]]
+                                       [:e :!!e ["hyper mode" 1]]
+                                       [:r :!!r ["hyper mode" 1]]
+                                       [:t :!!t ["hyper mode" 1]]
+                                       [:y :!!y ["hyper mode" 1]]
+                                       [:u :!!u ["hyper mode" 1]]
+                                       [:i :!!i ["hyper mode" 1]]
+                                       [:o :!!o ["hyper mode" 1]]
+                                       [:p :!!p ["hyper mode" 1]]
+                                       [:a :!!a ["hyper mode" 1]]
+                                       [:s :!!s ["hyper mode" 1]]
+                                       [:d :!!d ["hyper mode" 1]]
+                                       [:f :!!f ["hyper mode" 1]]
+                                       [:g :!!g ["hyper mode" 1]]
+                                       [:h :!!h ["hyper mode" 1]]
+                                       [:j :!!j ["hyper mode" 1]]
+                                       [:k :!!k ["hyper mode" 1]]
+                                       [:l :!!l ["hyper mode" 1]]
+                                       [:z :!!z ["hyper mode" 1]]
+                                       [:x :!!x ["hyper mode" 1]]
+                                       [:c :!!c ["hyper mode" 1]]
+                                       [:v :!!v ["hyper mode" 1]]
+                                       [:b :!!b ["hyper mode" 1]]
+                                       [:n :!!n ["hyper mode" 1]]
+                                       [:m :!!m ["hyper mode" 1]]
+                                       [:comma :!!comma ["hyper mode" 1]]
+                                       [:period :!!period ["hyper mode" 1]]
+                                       [:slash :!!slash ["hyper mode" 1]]
+                                       [:left_arrow :!!left_arrow ["hyper mode" 1]]
+                                       [:right_arrow :!!right_arrow ["hyper mode" 1]]
+                                       [:up_arrow :!!up_arrow ["hyper mode" 1]]
+                                       [:down_arrow :!!down_arrow ["hyper mode" 1]]
+                                        ]}
+        {:des "enter hyper mode" :rules [[:return_or_enter ["hyper mode" 1] nil {:afterup ["hyper mode" 0]
+                                                                   :alone :return_or_enter}]
+                                       [:1 :!!1 ["hyper mode" 1]]
+                                       [:2 :!!2 ["hyper mode" 1]]
+                                       [:3 :!!3 ["hyper mode" 1]]
+                                       [:4 :!!4 ["hyper mode" 1]]
+                                       [:5 :!!5 ["hyper mode" 1]]
+                                       [:6 :!!6 ["hyper mode" 1]]
+                                       [:7 :!!7 ["hyper mode" 1]]
+                                       [:8 :!!8 ["hyper mode" 1]]
+                                       [:9 :!!9 ["hyper mode" 1]]
+                                       [:q :!!q ["hyper mode" 1]]
+                                       [:w :!!w ["hyper mode" 1]]
+                                       [:e :!!e ["hyper mode" 1]]
+                                       [:r :!!r ["hyper mode" 1]]
+                                       [:t :!!t ["hyper mode" 1]]
+                                       [:y :!!y ["hyper mode" 1]]
+                                       [:u :!!u ["hyper mode" 1]]
+                                       [:i :!!i ["hyper mode" 1]]
+                                       [:o :!!o ["hyper mode" 1]]
+                                       [:p :!!p ["hyper mode" 1]]
+                                       [:a :!!a ["hyper mode" 1]]
+                                       [:s :!!s ["hyper mode" 1]]
+                                       [:d :!!d ["hyper mode" 1]]
+                                       [:f :!!f ["hyper mode" 1]]
+                                       [:g :!!g ["hyper mode" 1]]
+                                       [:h :!!h ["hyper mode" 1]]
+                                       [:j :!!j ["hyper mode" 1]]
+                                       [:k :!!k ["hyper mode" 1]]
+                                       [:l :!!l ["hyper mode" 1]]
+                                       [:z :!!z ["hyper mode" 1]]
+                                       [:x :!!x ["hyper mode" 1]]
+                                       [:c :!!c ["hyper mode" 1]]
+                                       [:v :!!v ["hyper mode" 1]]
+                                       [:b :!!b ["hyper mode" 1]]
+                                       [:n :!!n ["hyper mode" 1]]
+                                       [:m :!!m ["hyper mode" 1]]
+                                       [:comma :!!comma ["hyper mode" 1]]
+                                       [:period :!!period ["hyper mode" 1]]
+                                       [:slash :!!slash ["hyper mode" 1]]
+                                       [:left_arrow :!!left_arrow ["hyper mode" 1]]
+                                       [:right_arrow :!!right_arrow ["hyper mode" 1]]
+                                       [:up_arrow :!!up_arrow ["hyper mode" 1]]
+                                       [:down_arrow :!!down_arrow ["hyper mode" 1]]
+                                      ]}
+        {:des "a as ctrl" :rules [[:u :!Tu :a-mode]
+                                  [:i :!Ti :a-mode]
+                                  [:o :!To :a-mode]
+                                  [:p :!Tp :a-mode]
+                                  [:y :!Ty :a-mode]
+                                  [:h :!Th :a-mode]
+                                  [:j :!Tj :a-mode]
+                                  [:k :!Tk :a-mode]
+                                  [:l :!Tl :a-mode]
+                                  [:semicolon :!Tsemicolon :a-mode]
+                                  [:n :!Tn :a-mode]
+                                  [:m :!Tm :a-mode]
+                                  [:comma :!Tcomma :a-mode]
+                                  [:period :!Tperiod :a-mode]
+                                  [:slash :!Tslash :a-mode]
+                                  [:down_arrow :!Tdown_arrow :a-mode]
+                                  [:up_arrow :!Tup_arrow :a-mode]
+                                  [:right_arrow :!Tright_arrow :a-mode]
+                                  [:left_arrow :!Tleft_arrow :a-mode]
+                                  [:spacebar :!Tspacebar :a-mode]
+                                  ]}
+        {:des "č as ctrl" :rules [[:q :!Tq :semicolon-mode]
+                                  [:w :!Tw :semicolon-mode]
+                                  [:e :!Te :semicolon-mode]
+                                  [:r :!Tr :semicolon-mode]
+                                  [:t :!Tt :semicolon-mode]
+                                  [:a :!Ta :semicolon-mode]
+                                  [:s :!Ts :semicolon-mode]
+                                  [:d :!Td :semicolon-mode]
+                                  [:f :!Tf :semicolon-mode]
+                                  [:g :!Tg :semicolon-mode]
+                                  [:z :!Tz :semicolon-mode]
+                                  [:x :!Tx :semicolon-mode]
+                                  [:c :!Tc :semicolon-mode]
+                                  [:v :!Tv :semicolon-mode]
+                                  [:b :!Tb :semicolon-mode]
+                                  [:spacebar :!Tspacebar :semicolon-mode]
+                                  ]}
+        {:des "s as shift" :rules [
+                                   [:6 :!S6 :s-mode]
+                                   [:7 :!S7 :s-mode]
+                                   [:8 :!S8 :s-mode]
+                                   [:9 :!S9 :s-mode]
+                                   [:0 :!S0 :s-mode]
+                                   [:hyphen :!Shyphen :s-mode]
+                                   [:equal_sign :!Sequal_sign :s-mode]
+                                   [:u :!Su :s-mode]
+                                   [:i :!Si :s-mode]
+                                   [:o :!So :s-mode]
+                                   [:p :!Sp :s-mode]
+                                   [:open_bracket :!Sopen_bracket :s-mode]
+                                   [:close_bracket :!Sclose_bracket :s-mode]
+                                   [:y :!Sy :s-mode]
+                                   [:h :!Sh :s-mode]
+                                   [:j :!Sj :s-mode]
+                                   [:k :!Sk :s-mode]
+                                   [:l :!Sl :s-mode]
+                                   [:semicolon :!Ssemicolon :s-mode]
+                                   [:quote :!Squote :s-mode]
+                                   [:backslash :!Sbackslash :s-mode]
+                                   [:n :!Sn :s-mode]
+                                   [:m :!Sm :s-mode]
+                                   [:comma :!Scomma :s-mode]
+                                   [:period :!Speriod :s-mode]
+                                   [:slash :!Sslash :s-mode]
+                                   ]
+         }
+        {:des "l as shift" :rules [
+                                   [:1 :!R1 :l-mode]
+                                   [:2 :!R2 :l-mode]
+                                   [:3 :!R3 :l-mode]
+                                   [:4 :!R4 :l-mode]
+                                   [:5 :!R5 :l-mode]
+                                   [:q :!Rq :l-mode]
+                                   [:w :!Rw :l-mode]
+                                   [:e :!Re :l-mode]
+                                   [:r :!Rr :l-mode]
+                                   [:t :!Rt :l-mode]
+                                   [:a :!Ra :l-mode]
+                                   [:s :!Rs :l-mode]
+                                   [:d :!Rd :l-mode]
+                                   [:f :!Rf :l-mode]
+                                   [:g :!Rg :l-mode]
+                                   [:grave_accent_and_tilde :!Rgrave_accent_and_tilde :l-mode]
+                                   [:z :!Rz :l-mode]
+                                   [:x :!Rx :l-mode]
+                                   [:c :!Rc :l-mode]
+                                   [:v :!Rv :l-mode]
+                                   [:b :!Rb :l-mode]
+                                   ]
+         }
+        {:des "moj caps lock" :rules [[:!S##caps_lock :caps_lock]
+                                      [:!R##caps_lock :caps_lock]
+        ;                               [:##caps_lock :left_control nil {:alone :escape}]]}
+        ]}]}
