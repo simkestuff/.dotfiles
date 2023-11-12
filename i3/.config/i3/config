@@ -58,7 +58,7 @@ bindsym --release $mod+Print exec shutter -s
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id ~/.config/i3/bin/rofi_app_launcher
+bindsym $mod+space exec --no-startup-id ~/.config/i3/bin/rofi_app_launcher
 bindsym $mod+Shift+f exec /home/sinisa/.config/i3/bin/rofifinder
 
 
@@ -75,10 +75,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+# bindsym $mod+Shift+h move left
+# bindsym $mod+Shift+j move down
+# bindsym $mod+Shift+k move up
+# bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -97,16 +97,16 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 #bindsym $mod+w layout tabbed
-bindsym $mod+t layout tabbed
+# bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+# bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
