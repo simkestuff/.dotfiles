@@ -101,21 +101,23 @@ min_width=CPU 100.00%
 label=LOAD
 interval=10
 
-# Battery indicator
-#
-# The battery instance defaults to 0.
-[battery]
-command=~/.config/i3blocks/battery/battery
-# label=BAT
-label=⚡
-interval=30
-
 # Date Time
 #
 [time]
 command=date '+%d.%m.%Y %H:%M'
 # command=date '+%Y-%m-%d %H:%M:%S'
 interval=15
+
+# Battery indicator
+#
+# The battery instance defaults to 0.
+[battery]
+command=~/.config/i3blocks/battery2/battery2
+label=
+# label=⚡
+markup=pango
+interval=30
+
 
 # [rofi-calendar]
 # command=~/.config/i3blocks/rofi-calendar/rofi-calendar
