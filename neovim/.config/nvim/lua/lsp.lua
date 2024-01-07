@@ -11,7 +11,7 @@
     vim.keymap.set("n", "<leader>lw", require("telescope.builtin").lsp_dynamic_workspace_symbols, { buffer = bufnr, desc = "Workspace Symbols"})
     vim.keymap.set("n", "<leader>ls", function() vim.lsp.buf.signature_help() end, { buffer = bufnr, desc = "Signature help"})
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "Hover documentation"})
-    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "Signature Documentation"})
+    -- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "Signature Documentation"})
 
     -- Create a command `:Format` local to the LSP buffer
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
