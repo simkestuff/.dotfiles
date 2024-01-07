@@ -2,6 +2,7 @@ return {
     {
         "TimUntersberger/neogit",
         cmd = "Neogit",
+        enabled = false,
         config = function()
             require("neogit").setup({
                 kind = "tab", -- opens neogit in a split
