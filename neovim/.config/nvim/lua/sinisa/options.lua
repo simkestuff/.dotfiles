@@ -21,14 +21,16 @@ vim.o.clipboard = 'unnamedplus'
 vim.o.breakindent = true
 
 -- tabs & indentation
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.autoindent = true
 
 -- cursor line
 vim.opt.cursorline = true
 
+-- cursor thick
+vim.opt.guicursor = ""
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
@@ -52,4 +54,3 @@ vim.opt.splitbelow = true
 
 -- vim.opt.statusline = "%<%f %h%m%r%=%-14.(%l,%c%V%) %P"
 vim.opt.statusline = "%!v:lua.require'sinisa'.statusline()"
-
