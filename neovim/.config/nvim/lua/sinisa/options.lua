@@ -56,3 +56,9 @@ vim.opt.splitbelow = true
 
 -- vim.opt.statusline = "%<%f %h%m%r%=%-14.(%l,%c%V%) %P"
 vim.opt.statusline = "%!v:lua.require'sinisa'.statusline()"
+
+-- backup and undo files
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.config/nvim/undodir"
+vim.opt.undofile = true
