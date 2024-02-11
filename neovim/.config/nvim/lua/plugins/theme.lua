@@ -29,24 +29,39 @@ return {
     --         -- vim.cmd('colorscheme github_light')
     --     end,
     -- },
-    {
-        "miikanissi/modus-themes.nvim",
-        priority = 1000,
-        config = function()
-            require("modus-themes").setup({
-                -- style = "modus_operandi",
-                variant = "default",
-                on_colors = function(colors)
-                    colors.cursor = colors.red
-                end,
-                on_highlights = function (highlights, colors)
-                    highlights.cursor = {
-                        fg = colors.cursor,
-                        bg = colors.cursor
-                    }
-                end
-            })
-            vim.cmd.colorscheme("modus")
-        end
-    }
+    -- {
+    --     "miikanissi/modus-themes.nvim",
+    --     priority = 1000,
+    --     config = function()
+    --         require("modus-themes").setup({
+    --             -- style = "modus_operandi",
+    --             variant = "default",
+    --             on_colors = function(colors)
+    --                 colors.cursor = colors.red
+    --             end,
+    --             on_highlights = function (highlights, colors)
+    --                 highlights.cursor = {
+    --                     fg = colors.cursor,
+    --                     bg = colors.cursor
+    --                 }
+    --             end
+    --         })
+    --         vim.cmd.colorscheme("modus")
+    --     end
+    -- },
+  {
+    'rose-pine/neovim', name = 'rose-pine' ,
+    config = function ()
+      require("rose-pine").setup({
+        variant = "auto",
+        dark_variant = "moon",
+        styles = {
+          bold = true,
+          italic = true,
+          transparency = true,
+        },
+      })
+      vim.cmd.colorscheme("rose-pine")
+    end
+  }
 }
