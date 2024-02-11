@@ -104,3 +104,6 @@ source $ZSH/oh-my-zsh.sh
 [ -f "/home/sinisa/.ghcup/env" ] && source "/home/sinisa/.ghcup/env" # ghcup-env
 
 bindkey -s "^f" "/usr/local/bin/tmux-sessionizer\n"
+
+# opam configuration
+[[ ! -r /home/sinisa/.opam/opam-init/init.zsh ]] || source /home/sinisa/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
