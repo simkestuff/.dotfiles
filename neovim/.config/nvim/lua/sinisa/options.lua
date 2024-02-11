@@ -32,7 +32,7 @@ vim.opt.cursorline = true
 -- cursor thick
 vim.opt.guicursor = ""
 
-vim.opt.colorcolumn = "80"
+--vim.opt.colorcolumn = "80"
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
