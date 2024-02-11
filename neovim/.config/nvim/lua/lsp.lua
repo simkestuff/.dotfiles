@@ -41,6 +41,7 @@
   local servers = {
     pyright = {},
     hls = {},
+    ocamllsp = {},
 
     lua_ls = {
       Lua = {

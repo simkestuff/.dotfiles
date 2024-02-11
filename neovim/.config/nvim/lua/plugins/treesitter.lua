@@ -11,7 +11,7 @@ return {
     local configs = require("nvim-treesitter.configs")
 
     configs.setup({
-      ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "python", "haskell" },
+      ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "python", "haskell", "ocaml" },
       sync_install = false,
       auto_install = true,
       ignore_install = {},
@@ -29,6 +29,9 @@ return {
       textobjects = {
         enable = true,
       },
+      autopairs = {
+        enable = true,
+      }
     })
   end,
 }

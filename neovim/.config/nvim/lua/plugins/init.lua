@@ -19,7 +19,11 @@ return {
         "windwp/nvim-autopairs",
         dependencies = { "hrsh7th/nvim-cmp" },
         config = function()
-            require("nvim-autopairs").setup()
+            local npairs = require("nvim-autopairs")
+            npairs.setup({
+              check_ts = true,
+            })
+            npairs.get_rule("'")[1].not_filetypes = { "ocaml" }
             -- If you want to automatically add `(` after selecting a function or method
             local cmp_autopairs = require('nvim-autopairs.completion.cmp')
             local cmp = require('cmp')
@@ -39,18 +43,21 @@ return {
     },
 
     -- show indentation lines
-    {
-        -- Add indentation guides even on blank lines
-        'lukas-reineke/indent-blankline.nvim',
-        -- Enable `lukas-reineke/indent-blankline.nvim`
-        -- See `:help indent_blankline.txt`
-        main = "ibl",
-        opts = {
-          indent = {
-            char = '┊',
-          },
-        },
+  {
+    -- Add indentation guides even on blank lines
+    'lukas-reineke/indent-blankline.nvim',
+    -- Enable `lukas-reineke/indent-blankline.nvim`
+    -- See `:help indent_blankline.txt`
+    main = "ibl",
+    opts = {
+      indent = {
+        char = '┊',
+      },
+      scope =  {
+        enabled = false,
+      }
     },
+  },
 
     -- {
     --     'nvim-lualine/lualine.nvim',
