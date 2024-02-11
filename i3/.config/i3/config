@@ -293,7 +293,7 @@ for_window [class="kcalc"] floating enable border pixel 2
 
 
 # Assign to certain workspace
-assign [window_role="browser"] $ws2
+assign [window_role="browser"] $ws1
 
 # Press $mod+o followed by either f, s, l, m, v, k, d, t, Esc or Return {ENTER),
 # to launch FoxiReader, Skype, lxappearance, thunderbird, VirtualBox,
