@@ -7,7 +7,7 @@
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "Goto Definition"})
     vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { buffer = bufnr, desc = "Goto References"})
     -- vim.keymap.set("n", "<leader>ld", require("telescope.builtin").lsp_document_symbols, { buffer = bufnr, desc = "Document Symbols"})
-    vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float)
+    vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
     vim.keymap.set("n", "<leader>lw", require("telescope.builtin").lsp_dynamic_workspace_symbols, { buffer = bufnr, desc = "Workspace Symbols"})
     vim.keymap.set("n", "<leader>ls", function() vim.lsp.buf.signature_help() end, { buffer = bufnr, desc = "Signature help"})
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "Hover documentation"})
@@ -18,6 +18,23 @@
       vim.lsp.buf.format()
     end, { desc = 'Format current buffer with LSP' })
   end
+
+  -- decorate floating windows
+  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+    vim.lsp.handlers.hover, { border = 'rounded' }
+  )
+
+  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+    vim.lsp.handlers.signature_help, { border = 'rounded' }
+  )
+
+  vim.diagnostic.config(
+    {
+      float = {
+        border = "single"
+      }
+    }
+  )
 
   --  Add any additional override configuration in the following tables. They will be passed to
   --  the `settings` field of the server config. You must look up that documentation yourself.
