@@ -1,37 +1,24 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
-  dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-  },
-  build = function()
-    require("nvim-treesitter.install").update({ with_sync = true })
-  end,
-  event = {"BufReadPre", "BufNewFile"},
+  -- Highlight, edit, and navigate code
+  'nvim-treesitter/nvim-treesitter',
+  build = ':TSUpdate',
   config = function()
-    local configs = require("nvim-treesitter.configs")
+    -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
-    configs.setup({
-      ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "python", "haskell", "ocaml" },
-      sync_install = false,
+    ---@diagnostic disable-next-line: missing-fields
+    require('nvim-treesitter.configs').setup {
+      ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'haskell', 'ocaml' },
+      -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
       auto_install = true,
-      ignore_install = {},
       highlight = { enable = true },
       indent = { enable = true },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = '<c-space>',
-          node_incremental = '<c-space>',
-          scope_incremental = '<c-s>',
-          node_decremental = 'bs',
-        },
-      },
-      textobjects = {
-        enable = true,
-      },
-      autopairs = {
-        enable = true,
-      }
-    })
+    }
+
+    -- There are additional nvim-treesitter modules that you can use to interact
+    -- with nvim-treesitter. You should go explore a few and see what interests you:
+    --
+    --    - Incremental selection: Included, see :help nvim-treesitter-incremental-selection-mod
+    --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
+    --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   end,
 }
