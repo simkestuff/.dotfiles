@@ -1,6 +1,6 @@
   -- [[ Configure LSP ]]
   --  This function gets run when an LSP connects to a particular buffer.
-  local on_attach = function(_, bufnr)
+  local on_attach = function(client, bufnr)
 
     vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename"})
     vim.keymap.set("n", "<leader>lc", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code Action"})
@@ -17,6 +17,15 @@
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
       vim.lsp.buf.format()
     end, { desc = 'Format current buffer with LSP' })
+
+    -- format on save
+    -- if client.server_capabilities.documentFormattingProvider then
+    --   vim.api.nvim_create_autocmd("BufWritePre", {
+    --     group = vim.api.nvim_create_augroup("Format", { clear = true }),
+    --     buffer = bufnr,
+    --     callback = function() vim.lsp.buf.formatting_seq_sync() end
+    --   })
+    -- end
   end
 
   -- decorate floating windows
