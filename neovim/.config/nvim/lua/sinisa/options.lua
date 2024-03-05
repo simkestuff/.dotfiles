@@ -10,7 +10,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Enable mouse mode
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Don't show the mode, since it's already in status line
 -- enable if use with custom statusline that don't have mode showed
@@ -19,7 +19,7 @@ vim.opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = "unnamedplus"
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -28,13 +28,14 @@ vim.o.breakindent = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
+vim.opt.softtabstop = 2
 vim.autoindent = true
 
 -- Sets how neovim will display certain whitespace in the editor.
 --  See :help 'list'
 --  and :help 'listchars'
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", eol = "↲" }
 
 -- cursor line
 vim.opt.cursorline = true
@@ -49,16 +50,16 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- have some lines on top and bottom
 vim.opt.scrolloff = 10
 
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = 'menuone,noinsert,preview'
+vim.opt.completeopt = "menuone,noinsert,preview"
 
 -- NOTE: You should make sure your terminal supports this
 vim.opt.termguicolors = true
