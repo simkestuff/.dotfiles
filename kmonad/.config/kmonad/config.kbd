@@ -5,7 +5,9 @@
 
 (defalias
    ff (tap-next-release f lctl)
+   kk (tap-next-release k lalt)
    jj (tap-next-release j lctl)
+   dd (tap-next-release d lalt)
    ss (tap-next-release s lsft)
    ll (tap-next-release l lsft)
    cp (tap-next-release esc lmet)
@@ -13,10 +15,9 @@
 )
 
 (defsrc
-   caps s f j l ret
+   caps s d f j k l ret
 )
 
 (deflayer base
-   @cp @ss @ff @jj @ll @rp
+   @cp @ss @dd @ff @jj @kk @ll @rp
 )
-
