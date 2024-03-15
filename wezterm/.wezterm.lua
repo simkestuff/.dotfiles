@@ -19,7 +19,7 @@ config.keys = {
 		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
 	},
 	{
-		key = "h",
+		key = "s",
 		mods = "CTRL|ALT",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
@@ -27,6 +27,26 @@ config.keys = {
 		key = "v",
 		mods = "CTRL|ALT",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		key = "h",
+		mods = "CTRL|ALT",
+		action = wezterm.action.ActivatePaneDirection("Left"),
+	},
+	{
+		key = "l",
+		mods = "CTRL|ALT",
+		action = wezterm.action.ActivatePaneDirection("Right"),
+	},
+	{
+		key = "j",
+		mods = "CTRL|ALT",
+		action = wezterm.action.ActivatePaneDirection("Down"),
+	},
+	{
+		key = "k",
+		mods = "CTRL|ALT",
+		action = wezterm.action.ActivatePaneDirection("Up"),
 	},
 }
 for i = 1, 8 do
