@@ -273,6 +273,7 @@ return {
 				end,
 			},
 		})
+
 		require("lspconfig").ocamllsp.setup({
 			cmd = { "ocamllsp" },
 			filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
@@ -284,6 +285,16 @@ return {
 				"dune-project",
 				"dune-workspace"
 			),
+			capabilities = vim.tbl_deep_extend(
+				"force",
+				{},
+				capabilities,
+				require("lspconfig").ocamllsp.capabilities or {}
+			),
+			settings = {
+				codelens = { enable = true },
+				extendedHover = { enable = true },
+			},
 		})
 	end,
 }
