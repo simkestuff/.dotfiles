@@ -10,7 +10,7 @@ config.font = wezterm.font_with_fallback({ family = "JetBrains Mono", weight = "
 
 -- color scheme:
 --
-config.color_scheme = "rose-pine"
+config.color_scheme = "Dracula (Official)"
 
 config.keys = {
 	{
