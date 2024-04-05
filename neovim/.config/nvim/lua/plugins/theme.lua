@@ -1,23 +1,8 @@
 return {
-	-- {
-	--   'rose-pine/neovim', name = 'rose-pine' ,
-	--   config = function ()
-	--     require("rose-pine").setup({
-	--       variant = "auto",
-	--       dark_variant = "moon",
-	--       styles = {
-	--         bold = true,
-	--         italic = true,
-	--         transparency = true,
-	--       },
-	--     })
-	--     vim.cmd.colorscheme("rose-pine")
-	--   end
-	-- }
 	{
-		"Mofiqul/dracula.nvim",
+		"EdenEast/nightfox.nvim",
 		config = function()
-			vim.cmd.colorscheme("dracula")
+			vim.cmd.colorscheme("carbonfox")
 		end,
 	},
 }

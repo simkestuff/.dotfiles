@@ -10,7 +10,11 @@ config.font = wezterm.font_with_fallback({ family = "JetBrains Mono", weight = "
 
 -- color scheme:
 --
-config.color_scheme = "Dracula (Official)"
+config.color_scheme = "carbonfox"
+
+-- disable audio bell
+--
+config.audible_bell = "Disabled"
 
 config.keys = {
 	{
