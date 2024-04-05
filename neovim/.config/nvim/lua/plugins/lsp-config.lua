@@ -91,7 +91,7 @@ return {
 				-- map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
 				vim.keymap.set(
 					"n",
-					"<leader>D",
+					"gt",
 					require("telescope.builtin").lsp_type_definitions,
 					{ buffer = event.buf, desc = "Type [D]efinition" }
 				)
