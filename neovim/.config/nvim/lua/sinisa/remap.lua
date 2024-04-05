@@ -14,7 +14,7 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set("i", "jk", "<ESC>")
 
 -- nvim Explorer
-vim.keymap.set("n", "<leader>E", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
 -- keep cursor on center while scrolling
 vim.keymap.set("n", "<c-d>", "<c-d>zz")
