@@ -4,20 +4,38 @@
   fallthrough true)
 
 (defalias
-   ff (tap-next-release f lctl)
-   kk (tap-next-release k lalt)
-   jj (tap-next-release j lctl)
-   dd (tap-next-release d lalt)
-   ss (tap-next-release s lsft)
-   ll (tap-next-release l lsft)
-   cp (tap-next-release esc lmet)
-   rp (tap-next-release ret lmet)
+   aa (tap-hold-next-release 200 a lmet)
+   ss (tap-hold-next-release 200 s lalt)
+   dd (tap-hold-next-release 200 d lctl)
+   ff (tap-hold-next-release 200 f lsft)
+   jj (tap-hold-next-release 200 j rsft)
+   kk (tap-hold-next-release 200 k rctl)
+   ll (tap-hold-next-release 200 l lalt)
+   met; (tap-hold-next-release 200 ; lmet)
+   cp (tap-hold-next-release 200 esc lmet)
+   rp (tap-hold-next-release 200 ret lmet)
+   la_bs (tap-hold-next-release 200 bspc lalt)
 )
 
+#|
+(defalias 
+  sym (tap-next spc (layer-toggle syms))
+)
+|#
+
 (defsrc
-   caps s d f j k l ret
+   caps a s d f h j k l ; ret
+   lalt
 )
 
 (deflayer base
-   @cp @ss @dd @ff @jj @kk @ll @rp
+   @cp @aa @ss @dd @ff h @jj @kk @ll @met; @rp
+   @la_bs
 )
+
+#|
+(deflayer syms 
+  _ _ _ _ _ bspc _ _ del _ _
+  _ 
+)
+|#
