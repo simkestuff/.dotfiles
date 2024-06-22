@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git direnv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,3 +107,25 @@ bindkey -s "^f" "/usr/local/bin/tmux-sessionizer\n"
 
 # opam configuration
 [[ ! -r /home/sinisa/.opam/opam-init/init.zsh ]] || source /home/sinisa/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+# ovo je da se ispravno prikaže virt env kod ulaska u direktorij
+setopt PROMPT_SUBST
+
+show_virtual_env() {
+  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+    echo "($(basename $VIRTUAL_ENV))"
+  fi
+}
+PS1='$(show_virtual_env)'$PS1
+
+# ovo je zbog pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# poetry autocompletion
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
+
+# dodano zbog direnv alata; treba biti zadnja linija fajle?
+eval "$(direnv hook zsh)"

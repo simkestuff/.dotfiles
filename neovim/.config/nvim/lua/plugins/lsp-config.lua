@@ -142,7 +142,13 @@ return {
 				-- map('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 				vim.keymap.set(
 					"n",
-					"<C-K>",
+					"<C-s>",
+					vim.lsp.buf.signature_help,
+					{ buffer = event.buf, desc = "Signature Documentation" }
+				)
+				vim.keymap.set(
+					"i",
+					"<C-s>",
 					vim.lsp.buf.signature_help,
 					{ buffer = event.buf, desc = "Signature Documentation" }
 				)
