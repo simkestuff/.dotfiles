@@ -33,3 +33,4 @@ keymap({ "n", "v" }, "<leader>b", "<cmd>lua require('vscode').action('editor.deb
 keymap({ "n", "v" }, "<leader>a", "<cmd>lua require('vscode').action('editor.action.quickFix')<CR>")
 keymap({ "n", "v" }, "<leader>c", "<cmd>lua require('vscode').action('workbench.action.closeActiveEditor')<CR>")
 keymap({ "n", "v" }, "<leader>ff", "<cmd>lua require('vscode').action('workbench.action.quickOpen')<CR>")
+keymap({ "n", "v" }, "gr", "<cmd>lua require('vscode').action('editor.action.goToReferences')<CR>")
