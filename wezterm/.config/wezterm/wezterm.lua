@@ -1,6 +1,8 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
+local appearance = require("appearance")
+
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
@@ -10,7 +12,7 @@ config.font = wezterm.font_with_fallback({ family = "JetBrains Mono", weight = "
 
 -- color scheme:
 --
-config.color_scheme = "carbonfox"
+config.color_scheme = "Kanagawa Wave"
 
 -- disable audio bell
 --
