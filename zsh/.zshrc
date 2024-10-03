@@ -127,5 +127,8 @@ eval "$(pyenv init -)"
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit
 
+eval "$(zoxide init zsh)"
+alias cd="z"
+#
 # dodano zbog direnv alata; treba biti zadnja linija fajle?
 eval "$(direnv hook zsh)"
