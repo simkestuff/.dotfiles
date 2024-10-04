@@ -64,6 +64,9 @@ vim.opt.completeopt = "menuone,noinsert,preview"
 -- NOTE: You should make sure your terminal supports this
 vim.opt.termguicolors = true
 
+-- background color (for changes within script)
+vim.o.background = "light"
+
 -- split windows
 vim.opt.splitright = true
 vim.opt.splitbelow = true

@@ -100,6 +100,18 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# set dark mode (wezterm -> theme, nvim -> theme)
+dark() {
+    sed -i 's/color_scheme = .*/color_scheme = \"Google (dark) (terminal.sexy)"/g' $HOME/.config/wezterm/wezterm.lua
+    sed -i 's/vim.o.background.*/vim.o.background = \"dark\"/g' $HOME/.config/nvim/lua/sinisa/options.lua
+}
+
+# set light mode (wezterm -> theme, nvim -> theme)
+light() {
+    sed -i 's/color_scheme = .*/color_scheme = \"Google (light) (terminal.sexy)"/g' $HOME/.config/wezterm/wezterm.lua
+    sed -i 's/vim.o.background.*/vim.o.background = \"light"/g' $HOME/.config/nvim/lua/sinisa/options.lua
+}
+
 # haskell
 [ -f "/home/sinisa/.ghcup/env" ] && source "/home/sinisa/.ghcup/env" # ghcup-env
 
