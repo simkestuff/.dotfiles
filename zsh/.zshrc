@@ -132,3 +132,5 @@ alias cd="z"
 #
 # dodano zbog direnv alata; treba biti zadnja linija fajle?
 eval "$(direnv hook zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
