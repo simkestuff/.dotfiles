@@ -49,6 +49,9 @@ light() {
     sed -i 's/vim.o.background.*/vim.o.background = \"light"/g' $HOME/.config/nvim/lua/sinisa/options.lua
 }
 
+# golang
+export PATH=$PATH:$HOME/go/bin
+
 # haskell
 [ -f "/home/sinisa/.ghcup/env" ] && source "/home/sinisa/.ghcup/env" # ghcup-env
 

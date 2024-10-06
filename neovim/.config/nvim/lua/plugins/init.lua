@@ -59,7 +59,7 @@ return {
 	},
 
 	-- using same keybindigs here and in tmux
-	{ "christoomey/vim-tmux-navigator" },
+	-- { "christoomey/vim-tmux-navigator" },
 
 	{
 		"szw/vim-maximizer",
