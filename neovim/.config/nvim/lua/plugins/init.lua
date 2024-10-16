@@ -30,6 +30,9 @@ return {
 			--  You could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
 			require("mini.statusline").setup()
+
+			-- autopairs
+			require("mini.pairs").setup()
 		end,
 	},
 
