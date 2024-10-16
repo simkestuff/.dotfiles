@@ -13,7 +13,7 @@ config.font = wezterm.font_with_fallback({ family = "JetBrains Mono", weight = "
 
 -- color scheme:
 --
-config.color_scheme = "Google (light) (terminal.sexy)"
+config.color_scheme = "Modus-Operandi"
 
 -- disable audio bell
 --

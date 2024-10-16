@@ -53,6 +53,9 @@ light() {
 
 # golang
 export PATH=$PATH:$HOME/go/bin
+export GOPATH=~/go
+export GOROOT=/usr/local/go
+export GOBIN=$GOPATH/bin
 
 # haskell
 [ -f "/home/sinisa/.ghcup/env" ] && source "/home/sinisa/.ghcup/env" # ghcup-env
