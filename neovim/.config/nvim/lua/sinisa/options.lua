@@ -34,8 +34,8 @@ vim.autoindent = true
 -- Sets how neovim will display certain whitespace in the editor.
 --  See :help 'list'
 --  and :help 'listchars'
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", eol = "↲" }
+-- vim.opt.list = true
+-- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", eol = "↲" }
 
 -- cursor line
 vim.opt.cursorline = true
