@@ -93,5 +93,9 @@ return {
 				detached = vim.fn.has("win32") == 0,
 			},
 		})
+
+		vim.keymap.set("n", "<leader>dgt", function()
+			require("dap-go").debug_test()
+		end, { desc = "Debug: Debug Go closest test." })
 	end,
 }
