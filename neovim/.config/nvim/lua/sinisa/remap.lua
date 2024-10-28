@@ -21,7 +21,7 @@ vim.keymap.set("n", "<c-d>", "<c-d>zz")
 vim.keymap.set("n", "<c-u>", "<c-u>zz")
 
 -- clear search highlights
-vim.keymap.set("n", "<leader>nh", ":nohl<CR>")
+-- vim.keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 -- delete single character without copying to register
 vim.keymap.set("n", "x", '"_x')
