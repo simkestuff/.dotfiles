@@ -40,11 +40,65 @@ return {
 				-- Navigation
 				vim.keymap.set(
 					"n",
-					"[c",
+					"<leader>hp",
 					require("gitsigns").prev_hunk,
 					{ buffer = bufnr, desc = "Go to Previous Hunk" }
 				)
-				vim.keymap.set("n", "]c", require("gitsigns").next_hunk, { buffer = bufnr, desc = "Go to Next Hunk" })
+				vim.keymap.set(
+					"n",
+					"<leader>hn",
+					require("gitsigns").next_hunk,
+					{ buffer = bufnr, desc = "Go to Next Hunk" }
+				)
+				vim.keymap.set(
+					"n",
+					"<leader>hs",
+					require("gitsigns").stage_hunk,
+					{ buffer = bufnr, desc = "Stage Hunk" }
+				)
+				vim.keymap.set(
+					"n",
+					"<leader>hr",
+					require("gitsigns").reset_hunk,
+					{ buffer = bufnr, desc = "Reset Hunk" }
+				)
+				vim.keymap.set(
+					"n",
+					"<leader>hS",
+					require("gitsigns").stage_buffer,
+					{ buffer = bufnr, desc = "Stage buffer" }
+				)
+				vim.keymap.set("v", "<leader>hs", function()
+					require("gitsigns").stage_hunk(
+						{ vim.fn.line("."), vim.fn.line("v") },
+						{ buffer = bufnr, desc = "Stage hunk" }
+					)
+				end)
+				vim.keymap.set("v", "<leader>hr", function()
+					require("gitsigns").reset_hunk(
+						{ vim.fn.line("."), vim.fn.line("v") },
+						{ buffer = bufnr, desc = "Reset hunk" }
+					)
+				end)
+				vim.keymap.set(
+					"n",
+					"<leader>hu",
+					require("gitsigns").undo_stage_hunk,
+					{ buffer = bufnr, desc = "Undo Stage hunk" }
+				)
+
+				vim.keymap.set(
+					"n",
+					"<leader>hR",
+					require("gitsigns").reset_buffer,
+					{ buffer = bufnr, desc = "Reset buffer" }
+				)
+				vim.keymap.set(
+					"n",
+					"<leader>hp",
+					require("gitsigns").preview_hunk,
+					{ buffer = bufnr, desc = "Preview hunk" }
+				)
 			end,
 		},
 	},
