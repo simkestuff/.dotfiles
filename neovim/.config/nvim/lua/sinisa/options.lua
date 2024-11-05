@@ -19,7 +19,9 @@ vim.opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.opt.clipboard = "unnamedplus"
+vim.schedule(function()
+	vim.opt.clipboard = "unnamedplus"
+end)
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -34,8 +36,8 @@ vim.autoindent = true
 -- Sets how neovim will display certain whitespace in the editor.
 --  See :help 'list'
 --  and :help 'listchars'
--- vim.opt.list = true
--- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", eol = "↲" }
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", eol = "↲" }
 
 -- cursor line
 vim.opt.cursorline = true
@@ -65,7 +67,7 @@ vim.opt.completeopt = "menuone,noinsert,preview"
 vim.opt.termguicolors = true
 
 -- background color (for changes within script)
-vim.o.background = "light"
+vim.o.background = "dark"
 
 -- split windows
 vim.opt.splitright = true
