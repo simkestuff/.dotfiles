@@ -122,20 +122,29 @@ return {
 	},
 	{
 		"folke/which-key.nvim",
-		event = "VeryLazy",
+		event = "VimEnter",
+		opts = {
+			icons = {
+				mappings = vim.g.have_nerd_font,
+				icons = {},
+			},
+			spec = {
+				{ "<leader>f", group = "[F]ind stuff" },
+				{ "<leader>d", group = "[D]ebug and [D]iagnostic" },
+				{ "<leader>n", group = "[N]otes related" },
+				{ "<leader>e", group = "[E]xplore" },
+				{ "<leader>u", group = "[U]ndo tree" },
+				{ "<leader>h", group = "[H]unk Git related" },
+			},
+		},
+	},
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
-		},
-		keys = {
-			{
-				"<leader>?",
-				function()
-					require("which-key").show({ global = false })
-				end,
-				desc = "Buffer Local Keymaps (which-key)",
-			},
 		},
 	},
 }

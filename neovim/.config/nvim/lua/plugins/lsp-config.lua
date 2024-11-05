@@ -101,7 +101,7 @@ return {
 				-- map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
 				vim.keymap.set(
 					"n",
-					"<leader>ds",
+					"<leader>lds",
 					require("telescope.builtin").lsp_document_symbols,
 					{ buffer = event.buf, desc = "[D]ocument [S]ymbols" }
 				)
@@ -111,7 +111,7 @@ return {
 				-- map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 				vim.keymap.set(
 					"n",
-					"<leader>ws",
+					"<leader>lws",
 					require("telescope.builtin").lsp_dynamic_workspace_symbols,
 					{ buffer = event.buf, desc = "[W]orkspace [S]ymbols" }
 				)
@@ -119,14 +119,14 @@ return {
 				-- Rename the variable under your cursor
 				--  Most Language Servers support renaming across files, etc.
 				-- map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = event.buf, desc = "[R]e[n]ame" })
+				vim.keymap.set("n", "<leader>lrn", vim.lsp.buf.rename, { buffer = event.buf, desc = "[R]e[n]ame" })
 
 				-- Execute a code action, usually your cursor needs to be on top of an error
 				-- or a suggestion from your LSP for this to activate.
 				-- map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 				vim.keymap.set(
 					"n",
-					"<leader>ca",
+					"<leader>lca",
 					vim.lsp.buf.code_action,
 					{ buffer = event.buf, desc = "[C]ode [A]ction" }
 				)
