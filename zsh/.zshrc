@@ -40,22 +40,24 @@ fi
 # set dark mode (wezterm -> theme, nvim -> theme)
 dark() {
     export MYTHEME="dark"
-    sed -i 's/color_scheme = .*/color_scheme = \"Modus-Vivendi"/g' $HOME/.config/wezterm/wezterm.lua
+    # sed -i 's/color_scheme = .*/color_scheme = \"Modus-Vivendi"/g' $HOME/.config/wezterm/wezterm.lua
+    sed -i 's/color_scheme = .*/color_scheme = \"Catppuccin Mocha"/g' $HOME/.config/wezterm/wezterm.lua
     sed -i 's/vim.o.background.*/vim.o.background = \"dark\"/g' $HOME/.config/nvim/lua/sinisa/options.lua
 }
 
 # set light mode (wezterm -> theme, nvim -> theme)
 light() {
     export MYTHEME="light"
-    sed -i 's/color_scheme = .*/color_scheme = \"Modus-Operandi"/g' $HOME/.config/wezterm/wezterm.lua
+    # sed -i 's/color_scheme = .*/color_scheme = \"Modus-Operandi"/g' $HOME/.config/wezterm/wezterm.lua
+    sed -i 's/color_scheme = .*/color_scheme = \"Catppuccin Latte"/g' $HOME/.config/wezterm/wezterm.lua
     sed -i 's/vim.o.background.*/vim.o.background = \"light"/g' $HOME/.config/nvim/lua/sinisa/options.lua
 }
 
 # golang
 export PATH=$PATH:$HOME/go/bin
-export GOPATH=~/go
-export GOROOT=/usr/local/go
-export GOBIN=$GOPATH/bin
+# export GOPATH=~/go
+# export GOROOT=/usr/local/go
+# export GOBIN=$GOPATH/bin
 
 # haskell
 [ -f "/home/sinisa/.ghcup/env" ] && source "/home/sinisa/.ghcup/env" # ghcup-env

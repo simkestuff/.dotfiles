@@ -34,7 +34,7 @@ config.font = wezterm.font_with_fallback({ family = "JetBrains Mono", weight = "
 
 -- color scheme:
 --
-config.color_scheme = "Modus-Vivendi"
+config.color_scheme = "Catppuccin Mocha"
 
 -- disable audio bell
 --
