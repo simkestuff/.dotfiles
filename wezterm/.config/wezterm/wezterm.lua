@@ -71,6 +71,11 @@ local function split_nav(resize_or_move, key)
 	}
 end
 
+wezterm.on("gui-startup", function()
+	local tab, pane, window = mux.spawn_window({})
+	window:gui_window():maximize()
+end)
+
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
 config.keys = {
 	{
@@ -84,6 +89,11 @@ config.keys = {
 		key = "c",
 		mods = "LEADER",
 		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
+	},
+	{
+		key = "m",
+		mods = "LEADER",
+		action = wezterm.action.ToggleFullScreen,
 	},
 	-- toggle max panel
 	{
@@ -136,7 +146,7 @@ config.keys = {
 	},
 	-- Attach to muxer
 	{
-		key = "a",
+		key = "x",
 		mods = "LEADER",
 		action = act.AttachDomain("unix"),
 	},
