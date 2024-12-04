@@ -4,7 +4,7 @@
   fallthrough true)
 
 (defalias
-   aa (tap-hold-next-release 200 a lmet)
+;;   aa (tap-hold-next-release 200 a lmet)
    ss (tap-hold-next-release 200 s lalt)
    dd (tap-hold-next-release 200 d lsft)
    ff (tap-hold-next-release 200 f lctl)
@@ -17,25 +17,44 @@
    la_bs (tap-hold-next-release 200 bspc lalt)
 )
 
-#|
 (defalias 
-  sym (tap-next spc (layer-toggle syms))
+  sym (tap-hold 200 a (layer-toggle sym1))
+  š RA-f ;; [
+  đ RA-g ;; ]
+  ž RA-q ;; \
+  s7 S-7 ;; /
+  ć - ;; apostrof ' umjesto ć; minus zato ' tipka po ansi je -
+  car RA-3 ;; ^
+  cb (tap-hold 200 s (layer-toggle sym2)) ;; dodatni layer on top of sym1
+  šš RA-b ;; {
+  đđ RA-n ;; }
+  žž RA-w ;; |
+  s- S--  ;; ?
+  ćć RA-v ;; @
 )
-|#
 
 (defsrc
-   caps a s d f h j k l ; ret
-   lalt
+   [ ] \
+   caps a s d f h j k l ; ' ret
+   lalt /
 )
 
 (deflayer base
-   @cp @aa @ss @dd @ff h @jj @kk @ll @met; @rp
-   @la_bs
+   [ ] \
+   @cp @sym @ss @dd @ff h @jj @kk @ll @met; ' @rp
+   @la_bs /
 )
 
-#|
-(deflayer syms 
-  _ _ _ _ _ bspc _ _ del _ _
-  _ 
+
+(deflayer sym1 
+  @š @đ @ž
+  _ _ @cb _ _ left down up right @car - _
+  _ @s7
 )
-|#
+
+
+(deflayer sym2 
+  @šš @đđ @žž
+  _ _ _ _ _ left down up right _ @ćć _
+  _ @s-
+)
