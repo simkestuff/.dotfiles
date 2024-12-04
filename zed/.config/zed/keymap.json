@@ -9,11 +9,6 @@
   {
     "context": "Editor || Workspace",
     "bindings": {
-      "space e": "workspace::ToggleLeftDock",
-      "space x": "pane::CloseActiveItem",
-      "space f": ["file_finder::Toggle", { "separate_history": true }],
-      "space b": "tab_switcher::Toggle",
-      "space d": "diagnostics::Deploy",
       "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
       "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
       "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
@@ -30,6 +25,12 @@
     "context": "VimControl && !menu",
     "bindings": {
       // Put key bindings here if you want them to work in normal & visual mode.
+      "space e": "workspace::ToggleLeftDock",
+      "space x": "pane::CloseActiveItem",
+      "space f": ["file_finder::Toggle", { "separate_history": true }],
+      "space b": "tab_switcher::Toggle",
+      "space p": "projects::OpenRecent",
+      "space d": "diagnostics::Deploy"
     }
   },
   {
@@ -45,10 +46,16 @@
     }
   },
   {
-    "context": "EmptyPane || SharedScreen",
+    "context": "EmptyPane || SharedScreen || ProjectPanel",
     "bindings": {
       // Put key bindings here (in addition to the context above) if you want them to
       // work when no editor exists.
+      "space e": "workspace::ToggleLeftDock",
+      "space x": "pane::CloseActiveItem",
+      "space f": ["file_finder::Toggle", { "separate_history": true }],
+      "space b": "tab_switcher::Toggle",
+      "space p": "projects::OpenRecent",
+      "space d": "diagnostics::Deploy"
     }
   }
 ]
