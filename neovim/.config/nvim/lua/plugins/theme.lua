@@ -38,15 +38,26 @@ return {
 					crust = "#dddddd",
 				},
 			})
-			vim.cmd.colorscheme("catppuccin")
+			-- vim.cmd.colorscheme("catppuccin")
 		end,
 	},
-	-- {
-	-- 	"miikanissi/modus-themes.nvim",
-	-- 	priority = 1000,
-	-- 	opts = function(_, opts)
-	-- 		vim.cmd.colorscheme("modus")
-	-- 		return opts
-	-- 	end,
-	-- },
+	{
+		"miikanissi/modus-themes.nvim",
+		priority = 1000,
+		opts = function(_, opts)
+			-- vim.cmd.colorscheme("modus")
+			return opts
+		end,
+	},
+	{
+		"rebelot/kanagawa.nvim",
+		config = function()
+			require("kanagawa").setup({
+				background = {
+					dark = "dragon",
+				},
+			})
+			vim.cmd.colorscheme("kanagawa")
+		end,
+	},
 }

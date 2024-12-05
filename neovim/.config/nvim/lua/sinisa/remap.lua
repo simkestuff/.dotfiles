@@ -11,7 +11,7 @@ vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- use jk to exit insert mode
-vim.keymap.set("i", "jk", "<ESC>")
+vim.keymap.set("i", "jj", "<ESC>")
 
 -- nvim Explorer
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)

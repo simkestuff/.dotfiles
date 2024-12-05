@@ -40,13 +40,13 @@ return {
 				-- Navigation
 				vim.keymap.set(
 					"n",
-					"<leader>hp",
+					"<leader>hb",
 					require("gitsigns").prev_hunk,
 					{ buffer = bufnr, desc = "Go to Previous Hunk" }
 				)
 				vim.keymap.set(
 					"n",
-					"<leader>hn",
+					"<leader>hf",
 					require("gitsigns").next_hunk,
 					{ buffer = bufnr, desc = "Go to Next Hunk" }
 				)

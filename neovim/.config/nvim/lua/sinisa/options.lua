@@ -27,32 +27,17 @@ end)
 vim.o.breakindent = true
 
 -- tabs & indentation
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-vim.opt.softtabstop = 2
+vim.opt.softtabstop = 4
 vim.autoindent = true
-
-vim.api.nvim_create_augroup("GoSettings", { clear = true })
-vim.api.nvim_create_autocmd("FileType",
-		{
-		pattern = "go",
-		group = "GoSettings",
-		callback = function()
-			vim.opt.tabstop = 4
-			vim.opt.shiftwidth = 4
-			vim.opt.expandtab = false
-			vim.opt.softtabstop = 4
-			vim.autoindent = true
-		end,
-	}
-)
 
 -- Sets how neovim will display certain whitespace in the editor.
 --  See :help 'list'
 --  and :help 'listchars'
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", eol = "↲" }
+-- vim.opt.list = true
+-- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", eol = "↲" }
 
 -- cursor line
 vim.opt.cursorline = true
