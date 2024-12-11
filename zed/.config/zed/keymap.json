@@ -8,12 +8,7 @@
 [
   {
     "context": "Editor || Workspace",
-    "bindings": {
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
-    }
+    "bindings": {}
   },
   {
     "context": "Terminal",
@@ -46,7 +41,26 @@
     }
   },
   {
-    "context": "EmptyPane || SharedScreen || ProjectPanel",
+    "context": "vim_mode == insert && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-y": "editor::AcceptInlineCompletion"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp",
+      "shift-s": [
+        "vim::PushOperator",
+        {
+          "AddSurrounds": {}
+        }
+      ]
+    }
+  },
+  {
+    "context": "EmptyPane || SharedScreen || ProjectPanel || OutlinePanel",
     "bindings": {
       // Put key bindings here (in addition to the context above) if you want them to
       // work when no editor exists.
@@ -56,6 +70,21 @@
       "space b": "tab_switcher::Toggle",
       "space p": "projects::OpenRecent",
       "space d": "diagnostics::Deploy"
+    }
+  },
+  {
+    "context": "Dock || ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
+    "bindings": {
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "space x": "workspace::CloseAllDocks"
     }
   }
 ]
