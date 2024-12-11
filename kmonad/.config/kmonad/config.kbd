@@ -5,19 +5,19 @@
 
 (defalias
 ;;   aa (tap-hold-next-release 200 a lmet)
-   ss (tap-hold-next-release 200 s lalt)
-   dd (tap-hold-next-release 200 d lsft)
-   ff (tap-hold-next-release 200 f lctl)
-   jj (tap-hold-next-release 200 j rctl)
-   kk (tap-hold-next-release 200 k rsft)
+;;   ss (tap-hold-next-release 200 s lalt)
+   dd (tap-hold-next-release 200 d lctl)
+   ff (tap-hold-next-release 200 f lsft)
+   jj (tap-hold-next-release 200 j rsft)
+   kk (tap-hold-next-release 200 k rctl)
    ll (tap-hold-next-release 200 l lalt)
    met; (tap-hold-next-release 200 ; lmet)
    cp (tap-hold-next-release 200 esc lmet)
-   rp (tap-hold-next-release 200 ret lmet)
-   la_bs (tap-hold-next-release 200 bspc lalt)
+;;   rp (tap-hold-next-release 200 ret lmet)
+;;   la_bs (tap-hold-next-release 200 bspc lalt)
 )
 
-(defalias 
+(defalias
   sym (tap-hold 200 a (layer-toggle sym1))
   š RA-f ;; [
   đ RA-g ;; ]
@@ -25,7 +25,10 @@
   s7 S-7 ;; /
   ć - ;; apostrof ' umjesto ć; minus zato ' tipka po ansi je -
   car RA-3 ;; ^
-  cb (tap-hold 200 s (layer-toggle sym2)) ;; dodatni layer on top of sym1
+)
+
+(defalias
+  sym2 (tap-hold 200 s (layer-toggle sym2))
   šš RA-b ;; {
   đđ RA-n ;; }
   žž RA-w ;; |
@@ -36,25 +39,29 @@
 (defsrc
    [ ] \
    caps a s d f h j k l ; ' ret
-   lalt /
+   /
+   lalt spc
 )
 
 (deflayer base
    [ ] \
-   @cp @sym @ss @dd @ff h @jj @kk @ll @met; ' @rp
-   @la_bs /
+   @cp @sym @sym2 @dd @ff h @jj @kk @ll @met; ' ret
+   /
+   lalt spc
 )
 
 
-(deflayer sym1 
+(deflayer sym1
   @š @đ @ž
-  _ _ @cb _ _ left down up right @car - _
-  _ @s7
+  _ _ _ _ _ left down up right @car - _
+  @s7
+  _ _
 )
 
 
-(deflayer sym2 
+(deflayer sym2
   @šš @đđ @žž
   _ _ _ _ _ left down up right _ @ćć _
-  _ @s-
+  @s-
+  _ bspc
 )
