@@ -57,7 +57,14 @@ return {
 					dark = "dragon",
 				},
 			})
-			vim.cmd.colorscheme("kanagawa")
+			-- vim.cmd.colorscheme("kangawa")
+		end,
+	},
+	{
+		"navarasu/onedark.nvim",
+		config = function()
+			require("onedark").load()
+			vim.cmd.colorscheme("onedark")
 		end,
 	},
 }

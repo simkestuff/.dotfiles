@@ -83,4 +83,4 @@ vim.opt.undodir = os.getenv("HOME") .. "/.config/nvim/undodir"
 vim.opt.undofile = true
 
 -- use croatian symbols for more usuful ones
-vim.opt.langmap = "š[,đ],Š{,Đ}"
+-- vim.opt.langmap = "š[,đ],Š{,Đ}"

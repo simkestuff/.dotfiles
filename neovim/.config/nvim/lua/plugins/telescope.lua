@@ -66,6 +66,7 @@ return {
 				find_files = {
 					file_ignore_patterns = { ".git", ".venv" },
 					hidden = true,
+					theme = "ivy",
 				},
 			},
 			live_grep = {
@@ -73,6 +74,10 @@ return {
 				additional_args = function()
 					return { "--hidden" }
 				end,
+				theme = "ivy",
+			},
+			help_tags = {
+				theme = "ivy",
 			},
 			extensions = {
 				["ui-select"] = {

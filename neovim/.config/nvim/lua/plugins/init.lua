@@ -32,8 +32,11 @@ return {
 			require("mini.statusline").setup()
 
 			-- autopairs
-			require("mini.pairs").setup()
+			-- require("mini.pairs").setup()
 		end,
+	},
+	{
+		{ "echasnovski/mini.surround", version = false },
 	},
 
 	-- undotree
@@ -86,7 +89,7 @@ return {
 	},
 
 	-- "gc" to comment visual regions/lines
-	{ "numToStr/Comment.nvim", opts = {} },
+	-- { "numToStr/Comment.nvim", opts = {} },
 
 	{ -- Autoformat
 		"stevearc/conform.nvim",
