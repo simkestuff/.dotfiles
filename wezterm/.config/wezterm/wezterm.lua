@@ -9,24 +9,24 @@ local config = wezterm.config_builder()
 
 -- plugin for that provides functionality to save, load, and restore terminal sessions.
 --
-local session_manager = require("wezterm-session-manager/session-manager")
-wezterm.on("save_session", function(window)
-	session_manager.save_state(window)
-end)
-wezterm.on("load_session", function(window)
-	session_manager.load_state(window)
-end)
-wezterm.on("restore_session", function(window)
-	session_manager.restore_state(window)
-end)
+-- local session_manager = require("wezterm-session-manager/session-manager")
+-- wezterm.on("save_session", function(window)
+-- 	session_manager.save_state(window)
+-- end)
+-- wezterm.on("load_session", function(window)
+-- 	session_manager.load_state(window)
+-- end)
+-- wezterm.on("restore_session", function(window)
+-- 	session_manager.restore_state(window)
+-- end)
 
 -- this is for session management
 --
-config.unix_domains = {
-	{
-		name = "unix",
-	},
-}
+-- config.unix_domains = {
+-- 	{
+-- 		name = "unix",
+-- 	},
+-- }
 
 -- font
 --
@@ -34,7 +34,7 @@ config.font = wezterm.font_with_fallback({ family = "JetBrains Mono", weight = "
 
 -- color scheme:
 --
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "OneDark (base16)"
 
 -- disable audio bell
 --
@@ -71,8 +71,8 @@ local function split_nav(resize_or_move, key)
 	}
 end
 
-wezterm.on("gui-startup", function()
-	local tab, pane, window = mux.spawn_window({})
+wezterm.on("gui-startup", function(cmd)
+	local tab, pane, window = mux.spawn_window(cmd or {})
 	window:gui_window():maximize()
 end)
 
@@ -145,53 +145,53 @@ config.keys = {
 		action = act.CloseCurrentTab({ confirm = true }),
 	},
 	-- Attach to muxer
-	{
-		key = "x",
-		mods = "LEADER",
-		action = act.AttachDomain("unix"),
-	},
-
-	-- Detach from muxer
-	{
-		key = "d",
-		mods = "LEADER",
-		action = act.DetachDomain({ DomainName = "unix" }),
-	},
-	-- preimenuj sesiju
-	{
-		key = "$",
-		mods = "LEADER|SHIFT",
-		action = act.PromptInputLine({
-			description = "Enter new name for session",
-			action = wezterm.action_callback(function(window, pane, line)
-				if line then
-					mux.rename_workspace(window:mux_window():get_workspace(), line)
-				end
-			end),
-		}),
-	},
-	-- kreiraj novu sesiju ili se prebaci ne neku drugu sesiju
-	{
-		key = "s",
-		mods = "LEADER",
-		action = act.ShowLauncherArgs({ flags = "WORKSPACES" }),
-	},
-	-- Session manager bindings
-	{
-		key = "s",
-		mods = "LEADER|SHIFT",
-		action = act({ EmitEvent = "save_session" }),
-	},
-	{
-		key = "L",
-		mods = "LEADER|SHIFT",
-		action = act({ EmitEvent = "load_session" }),
-	},
-	{
-		key = "R",
-		mods = "LEADER|SHIFT",
-		action = act({ EmitEvent = "restore_session" }),
-	},
+	-- {
+	-- 	key = "x",
+	-- 	mods = "LEADER",
+	-- 	action = act.AttachDomain("unix"),
+	-- },
+	--
+	-- -- Detach from muxer
+	-- {
+	-- 	key = "d",
+	-- 	mods = "LEADER",
+	-- 	action = act.DetachDomain({ DomainName = "unix" }),
+	-- },
+	-- -- preimenuj sesiju
+	-- {
+	-- 	key = "$",
+	-- 	mods = "LEADER|SHIFT",
+	-- 	action = act.PromptInputLine({
+	-- 		description = "Enter new name for session",
+	-- 		action = wezterm.action_callback(function(window, pane, line)
+	-- 			if line then
+	-- 				mux.rename_workspace(window:mux_window():get_workspace(), line)
+	-- 			end
+	-- 		end),
+	-- 	}),
+	-- },
+	-- -- kreiraj novu sesiju ili se prebaci ne neku drugu sesiju
+	-- {
+	-- 	key = "s",
+	-- 	mods = "LEADER",
+	-- 	action = act.ShowLauncherArgs({ flags = "WORKSPACES" }),
+	-- },
+	-- -- Session manager bindings
+	-- {
+	-- 	key = "s",
+	-- 	mods = "LEADER|SHIFT",
+	-- 	action = act({ EmitEvent = "save_session" }),
+	-- },
+	-- {
+	-- 	key = "L",
+	-- 	mods = "LEADER|SHIFT",
+	-- 	action = act({ EmitEvent = "load_session" }),
+	-- },
+	-- {
+	-- 	key = "R",
+	-- 	mods = "LEADER|SHIFT",
+	-- 	action = act({ EmitEvent = "restore_session" }),
+	-- },
 }
 -- ctrl-num prebacuje na num prozor
 for i = 1, 8 do
@@ -213,5 +213,9 @@ config.window_padding = {
 config.use_fancy_tab_bar = true
 config.tab_bar_at_bottom = true
 config.tab_max_width = 32
+
+-- clipboard copying
+-- config.enable_osc52_paste = true
+config.enable_wayland = true
 
 return config
