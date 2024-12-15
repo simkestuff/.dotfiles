@@ -25,7 +25,11 @@
       "space f": ["file_finder::Toggle", { "separate_history": true }],
       "space b": "tab_switcher::Toggle",
       "space p": "projects::OpenRecent",
-      "space d": "diagnostics::Deploy"
+      "space d": "diagnostics::Deploy",
+      "g r r": "editor::FindAllReferences",
+      "g r a": "editor::ToggleCodeActions",
+      "g r n": "editor::Rename",
+      "g r i": "editor::GoToImplementation"
     }
   },
   {
@@ -37,13 +41,14 @@
   {
     "context": "vim_mode == insert",
     "bindings": {
-      "j j": "vim::NormalBefore" // In insert mode, make jk escape to normal mode.
+      "j j": "vim::NormalBefore", // In insert mode, make jk escape to normal mode.
+      "ctrl-m": "editor::Newline"
     }
   },
   {
-    "context": "vim_mode == insert && (showing_code_actions || showing_completions)",
+    "context": "Editor && (showing_code_actions || showing_completions)",
     "bindings": {
-      "ctrl-y": "editor::AcceptInlineCompletion"
+      "ctrl-y": "editor::ConfirmCompletion"
     }
   },
   {
