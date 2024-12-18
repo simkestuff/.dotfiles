@@ -46,10 +46,32 @@ vim.keymap.set("n", "<leader>de", vim.diagnostic.open_float, { desc = "Show diag
 vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 -- terminal
-vim.keymap.set("t", "<Esc>", "<C-\\><C-N>")
-vim.keymap.set("n", "<leader>t", function()
-	vim.cmd.new()
-	vim.cmd.terminal()
-	vim.cmd.wincmd("J")
-	vim.api.nvim_win_set_height(0, 10)
-end)
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-N>")
+
+local term_buf, term_win
+
+local toggle_terminal = function()
+	if term_win and vim.fn.win_gotoid(term_win) == 1 then
+		vim.cmd("hide")
+	else
+		if term_buf and vim.fn.bufexists(term_buf) == 1 then
+			vim.cmd("sb " .. term_buf)
+			vim.api.nvim_win_set_height(0, 10)
+		else
+			vim.cmd.new()
+			vim.cmd.terminal()
+			vim.cmd.wincmd("J")
+			vim.api.nvim_win_set_height(0, 10)
+			term_buf = vim.fn.bufnr("%")
+		end
+		term_win = vim.fn.win_getid()
+	end
+end
+
+vim.keymap.set("n", "<leader>t", toggle_terminal)
+-- vim.keymap.set("n", "<leader>t", function()
+-- 	vim.cmd.new()
+-- 	vim.cmd.terminal()
+-- 	vim.cmd.wincmd("J")
+-- 	vim.api.nvim_win_set_height(0, 10)
+-- end)
