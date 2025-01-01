@@ -25,6 +25,8 @@
   s7 S-7 ;; /
   ć - ;; apostrof ' umjesto ć; minus zato ' tipka po ansi je -
   car RA-3 ;; ^
+  lt 102d ;; <
+  gt S-102d ;; >
 )
 
 (defalias
@@ -39,14 +41,14 @@
 (defsrc
    [ ] \
    caps a s d f h j k l ; ' ret
-   /
+   , . /
    lalt spc
 )
 
 (deflayer base
    [ ] \
    @cp @sym @sym2 @dd @ff h @jj @kk @ll @met; ' ret
-   /
+   , . /
    lalt spc
 )
 
@@ -54,7 +56,7 @@
 (deflayer sym1
   @š @đ @ž
   _ _ _ _ _ left down up right @car - _
-  @s7
+  @lt @gt @s7
   _ _
 )
 
@@ -62,6 +64,6 @@
 (deflayer sym2
   @šš @đđ @žž
   _ _ _ _ _ left down up right _ @ćć _
-  @s-
+  _ _ @s-
   _ bspc
 )
