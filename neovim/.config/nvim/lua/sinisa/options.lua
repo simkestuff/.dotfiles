@@ -67,7 +67,22 @@ vim.opt.completeopt = "menuone,noinsert,preview"
 vim.opt.termguicolors = true
 
 -- background color (for changes within script)
-vim.o.background = "dark"
+vim.o.background = "light"
+-- set background color to white, otherwise default is gray
+if vim.o.background == "light" then
+	vim.api.nvim_set_hl(0, "Normal", { bg = "white" })
+end
+
+-- if during session background changes to light
+-- set bg color to white
+vim.api.nvim_create_autocmd("OptionSet", {
+	pattern = "background",
+	callback = function()
+		if vim.o.background == "light" then
+			vim.api.nvim_set_hl(0, "Normal", { bg = "white" })
+		end
+	end,
+})
 
 -- split windows
 vim.opt.splitright = true
