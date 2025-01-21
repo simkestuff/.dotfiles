@@ -7,13 +7,14 @@
 // from the command palette.
 [
   {
-    "context": "Editor || Workspace",
+    "context": "Editor",
     "bindings": {}
   },
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-z": "workspace::ToggleZoom"
+      "ctrl-w z": "workspace::ToggleZoom",
+      "ctrl-w x": "pane::CloseActiveItem"
     }
   },
   {
@@ -21,6 +22,12 @@
     "bindings": {
       // Put key bindings here if you want them to work in normal & visual mode.
       "space e": "workspace::ToggleLeftDock",
+      "space g": [
+        "task::Spawn",
+        { "task_name": "lazygit", "reveal_target": "center" }
+      ],
+      "space t": "terminal_panel::ToggleFocus",
+      "space T": "workspace::NewCenterTerminal",
       "space x": "pane::CloseActiveItem",
       "space f": ["file_finder::Toggle", { "separate_history": true }],
       "space b": "tab_switcher::Toggle",
@@ -70,26 +77,25 @@
       // Put key bindings here (in addition to the context above) if you want them to
       // work when no editor exists.
       "space e": "workspace::ToggleLeftDock",
+      "space t": "terminal_panel::ToggleFocus",
       "space x": "pane::CloseActiveItem",
       "space f": ["file_finder::Toggle", { "separate_history": true }],
       "space b": "tab_switcher::Toggle",
       "space p": "projects::OpenRecent",
-      "space d": "diagnostics::Deploy"
-    }
-  },
-  {
-    "context": "Dock || ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
-    "bindings": {
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
-    }
-  },
-  {
-    "context": "Dock",
-    "bindings": {
-      "space x": "workspace::CloseAllDocks"
+      "space d": "diagnostics::Deploy",
+      "space g": [
+        "task::Spawn",
+        { "task_name": "start lazygit", "target": "center" }
+      ]
     }
   }
+  // {
+  //   "context": "Dock || ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
+  //   "bindings": {
+  //     "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+  //     "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+  //     "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+  //     "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+  //   }
+  // }
 ]
