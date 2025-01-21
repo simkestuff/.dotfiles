@@ -85,7 +85,7 @@
       "space d": "diagnostics::Deploy",
       "space g": [
         "task::Spawn",
-        { "task_name": "start lazygit", "target": "center" }
+        { "task_name": "start lazygit", "reveal_target": "center" }
       ]
     }
   }
