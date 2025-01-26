@@ -37,20 +37,16 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# set dark mode (wezterm -> theme, nvim -> theme)
+# set dark mode (nvim -> theme)
 dark() {
     export MYTHEME="dark"
-    # sed -i 's/color_scheme = .*/color_scheme = \"Modus-Vivendi"/g' $HOME/.config/wezterm/wezterm.lua
-    sed -i 's/color_scheme = .*/color_scheme = \"Catppuccin Mocha"/g' $HOME/.config/wezterm/wezterm.lua
-    sed -i 's/vim.o.background.*/vim.o.background = \"dark\"/g' $HOME/.config/nvim/lua/sinisa/options.lua
+    sed -i 's/^vim.o.background = \".*\"$/vim.o.background = \"dark\"/g' $HOME/.config/nvim/lua/sinisa/options-after.lua
 }
 
-# set light mode (wezterm -> theme, nvim -> theme)
+# set light mode (nvim -> theme)
 light() {
     export MYTHEME="light"
-    # sed -i 's/color_scheme = .*/color_scheme = \"Modus-Operandi"/g' $HOME/.config/wezterm/wezterm.lua
-    sed -i 's/color_scheme = .*/color_scheme = \"Catppuccin Latte"/g' $HOME/.config/wezterm/wezterm.lua
-    sed -i 's/vim.o.background.*/vim.o.background = \"light"/g' $HOME/.config/nvim/lua/sinisa/options.lua
+    sed -i 's/^vim.o.background = \".*\"$/vim.o.background = \"light"/g' $HOME/.config/nvim/lua/sinisa/options-after.lua
 }
 
 # golang

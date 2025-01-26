@@ -19,4 +19,6 @@ else
 	require("sinisa.options")
 
 	require("lazy").setup("plugins", {})
+
+  require("sinisa.options-after")
 end

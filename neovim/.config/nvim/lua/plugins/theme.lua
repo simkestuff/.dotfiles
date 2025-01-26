@@ -42,7 +42,7 @@ return {
 	-- 		end,
 	-- 	},
 	-- 	{
-	-- 		"miikanissi/modus-themes.nvim",
+	"miikanissi/modus-themes.nvim",
 	-- 		priority = 1000,
 	-- 		opts = function(_, opts)
 	-- 			-- vim.cmd.colorscheme("modus")
@@ -70,4 +70,10 @@ return {
 	-- 			vim.cmd.colorscheme("onedark")
 	-- 		end,
 	-- 	},
+	{
+		"blazkowolf/gruber-darker.nvim",
+		-- config = function()
+		-- 	vim.cmd.colorscheme("gruber-darker")
+		-- end,
+	},
 }
