@@ -245,6 +245,28 @@ If the new path's directories does not exist, create them."
   (key-chord-mode 1))
   
 
+;;; Org
+(use-package org
+  :ensure nil
+  :config
+  (customize-set-variable 'org-directory "~/org")
+  (customize-set-variable 'org-default-notes-file (concat org-directory "/notes.org"))
+  (global-set-key (kbd "C-c L") #'org-store-link)
+  (global-set-key (kbd "C-c a") #'org-agenda)
+  (global-set-key (kbd "C-c c") #'org-capture)
+  (customize-set-variable 'org-hide-leading-stars t) ; sakrij sve osim zadnjeg asteriksa
+  (customize-set-variable 'org-startup-indented t) ; uvuci tekst i poravnaj ga prema headline-u
+  (customize-set-variable 'org-image-actual-width nil) ; ne korisni stvarnu širinu slike
+  (customize-set-variable 'org-return-follows-link t) ; RET će slijediti link
+  (customize-set-variable 'org-log-into-drawer t)
+  (customize-set-variable 'org-hide-emphasis-markers t)) ; sakriva oznake za bold, italics i slično
+
+(use-package org-agenda
+  :ensure nil
+  :config
+  (customize-set-variable 'org-agenda-files '("~/org")))
+
+
 
 ;;; lsp
 (use-package lsp-mode
