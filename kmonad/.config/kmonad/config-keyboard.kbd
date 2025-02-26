@@ -5,7 +5,7 @@
 
 (defalias
 ;;   aa (tap-hold-next-release 200 a lmet)
-;;   ss (tap-hold-next-release 200 s lalt)
+   ss (tap-hold-next-release 200 s lalt)
    dd (tap-hold-next-release 200 d lctl)
    ff (tap-hold-next-release 200 f lsft)
    jj (tap-hold-next-release 200 j rsft)
@@ -17,8 +17,8 @@
 ;;   la_bs (tap-hold-next-release 200 bspc lalt)
 )
 
-(defalias 
-  sym (tap-hold 200 a (layer-toggle sym1))
+(defalias
+  sym1 (tap-hold 200 a (layer-toggle sym1))
   š RA-f ;; [
   đ RA-g ;; ]
   ž RA-q ;; \
@@ -30,39 +30,39 @@
 )
 
 (defalias
-  sym2 (tap-hold 200 s (layer-toggle sym2))
+  sym2 (tap-hold 200 g (layer-toggle sym2))
   šš RA-b ;; {
   đđ RA-n ;; }
   žž RA-w ;; |
   s- S--  ;; ?
   ćć RA-v ;; @
+  s2 S-2 ;; "
 )
 
 (defsrc
    [ ] \
-   caps a s d f h j k l ; ' ret
+   caps a s d f g h j k l ; ' ret
    , . /
    lalt spc
 )
 
 (deflayer base
    [ ] \
-   @cp @sym @sym2 @dd @ff h @jj @kk @ll @met; ' ret 
+   @cp @sym1 @ss @dd @ff @sym2 h @jj @kk @ll @met; ' ret
    , . /
    lalt spc
 )
 
-(deflayer sym1 
+(deflayer sym1
   @š @đ @ž
-  _ _ _ _ _ left down up right @car - ret
+  _ _ _ _ _ _ left down up right @car - _
   @lt @gt @s7
   _ _
 )
 
-
-(deflayer sym2 
+(deflayer sym2
   @šš @đđ @žž
-  _ _ _ _ _ left down up right _ @ćć ret
+  _ _ _ _ _ _ left down up right @ćć @s2 _
   _ _ @s-
-  _ bspc
+  _ _
 )
