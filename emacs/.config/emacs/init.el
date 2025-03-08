@@ -296,6 +296,10 @@ If the new path's directories does not exist, create them."
 	   "%?" :empty-lines 1)
 	  )))
 
+(use-package org-appear
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook 'org-appear-mode))
 
 ;;; lsp
 (use-package lsp-mode
