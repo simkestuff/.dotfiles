@@ -19,6 +19,9 @@
                (display-buffer-no-window)
                (allow-no-window . t)))
 
+;;;; custom modules directory
+(add-to-list 'load-path (expand-file-name "sk-modules/" user-emacs-directory))
+
 ;;; Don't litter file system with *~ backup files; put them all inside
 ;;; ~/.emacs.d/backup or wherever
 (defun sk--backup-file-name (fpath)
@@ -61,9 +64,13 @@ If the new path's directories does not exist, create them."
 
 ;;; Tweak the looks of Emacs
 
-(let ((mono-spaced-font "JetBrainsMono Nerd Font Mono")
-      (proportionately-spaced-font "JetBrainsMono Nerd Font Propo"))
-  (set-face-attribute 'default nil :family mono-spaced-font :height 120)
+;;;; Fonts
+;; opcije :
+;; "JetBrainsMono Nerd Font Mono"
+;; "CommitMono"
+(let ((mono-spaced-font "Iosevka Nerd Font")
+      (proportionately-spaced-font "Iosevka Nerd Font Propo"))
+  (set-face-attribute 'default nil :family mono-spaced-font :height 130)
   (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.0)
   (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.0))
 
@@ -233,6 +240,8 @@ If the new path's directories does not exist, create them."
   ;; modes that starts in emacs mode instead of normal mode
   (dolist (mode '(dired-mode
 		  compilation-mode
+		  ediff-mode
+		  calendar-mode
 		  Info-mode))
     (evil-set-initial-state mode 'emacs)))
 
@@ -254,6 +263,11 @@ If the new path's directories does not exist, create them."
   (global-set-key (kbd "C-c L") #'org-store-link)
   (global-set-key (kbd "C-c a") #'org-agenda)
   (global-set-key (kbd "C-c c") #'org-capture)
+  ;; org-id
+  (require 'org-id)
+  (setq org-id-link-to-org-use-id 'create-if-interactive)
+  (customize-set-variable 'org-id-link-consider-parent-id t)
+  ;; misc
   (customize-set-variable 'org-hide-leading-stars t) ; sakrij sve osim zadnjeg asteriksa
   (customize-set-variable 'org-startup-indented t) ; uvuci tekst i poravnaj ga prema headline-u
   (customize-set-variable 'org-image-actual-width nil) ; ne korisni stvarnu širinu slike
@@ -264,8 +278,23 @@ If the new path's directories does not exist, create them."
 (use-package org-agenda
   :ensure nil
   :config
-  (customize-set-variable 'org-agenda-files '("~/org")))
+  (customize-set-variable 'org-agenda-files '("~/org/")))
 
+(use-package org-capture
+  :ensure nil
+  :config
+  (setq org-capture-templates
+	'(("t" "Task" entry
+	   (file+headline "" "Tasks")
+	   "* TODO %?\n %U\n")
+	  ("d" "Daily Notes")
+	  ("dj" "Journal" entry
+	   (file+headline (lambda() (sk-daily-today-file)) "Journal")
+	   "** %?\nadded: %U\n" :empty-lines 1)
+	  ("ds" "ScratchPad" plain
+	   (file+headline (lambda() (sk-daily-today-file)) "ScratchPad")
+	   "%?" :empty-lines 1)
+	  )))
 
 
 ;;; lsp
@@ -298,6 +327,15 @@ If the new path's directories does not exist, create them."
 
 (add-hook 'c-mode-hook #'sk-c-mode-hook)
 
+(setq c-default-style '((java-mode . "java") (awk-mode . "awk") (c-mode . "stroustrup") (other . "gnu")))
+
+
 ;;;; Magit
 (use-package magit
   :ensure t)
+(put 'upcase-region 'disabled nil)
+
+
+;;;; Custom
+(require 'sk-daily)
+(define-key global-map (kbd "M-n") #'sk-daily-today)
