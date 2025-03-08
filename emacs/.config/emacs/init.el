@@ -278,7 +278,7 @@ If the new path's directories does not exist, create them."
 (use-package org-agenda
   :ensure nil
   :config
-  (customize-set-variable 'org-agenda-files '("~/org/")))
+  (customize-set-variable 'org-agenda-files (directory-files-recursively "~/org" "\\.org$")))
 
 (use-package org-capture
   :ensure nil
