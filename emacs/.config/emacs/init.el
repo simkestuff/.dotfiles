@@ -287,6 +287,11 @@ If the new path's directories does not exist, create them."
 	'(("t" "Task" entry
 	   (file+headline "" "Tasks")
 	   "* TODO %?\n %U\n")
+	  ("s" "Subtopic entry"
+	   plain
+	   (function sk-meets-capture-target)
+	   "Podsjetnik za %^{Podsjetnik za}t\n%?"
+	   :empty-lines 1)
 	  ("d" "Daily Notes")
 	  ("dj" "Journal" entry
 	   (file+headline (lambda() (sk-daily-today-file)) "Journal")
