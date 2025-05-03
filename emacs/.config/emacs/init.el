@@ -171,6 +171,8 @@ If the new path's directories does not exist, create them."
   (setq corfu-popupinfo-delay '(0.25 . 0.5))
   (corfu-popupinfo-mode 1) ; shows documentation after `corfu-popupinfo-delay'
 
+  ;; exclude certain modes
+  (setq global-corfu-modes '(prog-mode))
   ;; Sort by input history (no need to modify `corfu-sort-function').
   (with-eval-after-load 'savehist
     (corfu-history-mode 1)
