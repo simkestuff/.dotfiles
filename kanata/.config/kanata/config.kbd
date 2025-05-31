@@ -38,13 +38,14 @@
 
   a-mod (tap-hold $tt $ht a (layer-while-held movs))
   s-mod (tap-hold-release $tt $ht s lalt)
-  d-mod (tap-hold-release $tt $ht d lctl)
-  f-mod (tap-hold-release $tt $ht f lsft)
+  d-mod (tap-hold-release $tt $ht d lsft)
+  f-mod (tap-hold-release $tt $ht f lctl)
 
-  j-mod (tap-hold-release $tt $ht j rsft)
-  k-mod (tap-hold-release $tt $ht k rctl)
+  j-mod (tap-hold-release $tt $ht j rctl)
+  k-mod (tap-hold-release $tt $ht k rsft)
   l-mod (tap-hold-release $tt $ht l lalt)
   č-mod (tap-hold $tt $ht č (layer-while-held syms))
+  sy-mod (tap-hold $tt $ht spc (layer-while-held syms))
 )
 
 ;; zagrade
@@ -81,7 +82,7 @@
   tab  q    w    e    r    t    z    u    i    o    p    š    đ    ž
   @cap @a-mod    @s-mod    @d-mod    @f-mod    g    h    @j-mod    @k-mod    @l-mod    @č-mod    ć    ret
   lsft y    x    c    v    b    n    m    ,    .    -    rsft
-  lctl lmet lalt           spc            ralt rmet rctl
+  lctl lmet lalt           @sy-mod            ralt rmet rctl
 )
 
 
@@ -94,9 +95,9 @@
 )
 
 (deflayer syms
-  XX @bsla @til @sla XX XX                     XX XX XX XX XX XX XX XX
-  @bkt  @qt   @dqt  @car  @exc  @que           XX  XX  XX  XX  XX  XX  XX  XX 
-  @and  @lab  @rab  @lp   @rp   @at            h  @j-mod  @k-mod  @l-mod  XX  XX XX 
-  @dol  @lcb  @rcb  @lsb  @rsb  @hash          XX   XX    XX   XX   XX    XX
+  XX @bsla @til @sla XX XX                     XX 7  8  9 XX XX XX XX
+  @bkt  @qt   @dqt  @car  @exc  @que           XX  4  5  6  XX  XX  XX  XX 
+  @and  @lab  @rab  @lp   @rp   @at            h    1  2  3  XX  XX XX 
+  @dol  @lcb  @rcb  @lsb  @rsb  @hash          XX   0   , .   XX    XX
   XX XX XX           XX           XX XX XX 
 )
