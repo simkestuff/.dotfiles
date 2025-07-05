@@ -59,6 +59,7 @@ If the new path's directories does not exist, create them."
 ;;;; which-key
 (use-package which-key
   :ensure nil
+  :disabled
   :config
   (which-key-mode))
 
@@ -112,7 +113,9 @@ If the new path's directories does not exist, create them."
 
 (use-package vertico
   :ensure t
-  :hook (after-init . vertico-mode))
+  :hook (after-init . vertico-mode)
+  :config
+  (vertico-multiform-mode))
 
 (use-package marginalia
   :ensure t
@@ -155,10 +158,37 @@ If the new path's directories does not exist, create them."
   ;; Narrowing lets you restrict results to certain groups of candidates
   (setq consult-narrow-key "<"))
 
+;;;; Embark
+(use-package embark
+  :ensure t
+  :bind
+  (("C-." . embark-act)         ;; pick some comfortable binding
+   ("C-;" . embark-dwim)        ;; good alternative: M-.
+   )
+  :init
+  ;; Optionally replace the key help with a completing-read interface
+  (setq prefix-help-command #'embark-prefix-help-command)
+  :config
+  ;; Hide the mode line of the Embark live/completions buffers
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                 nil
+                 (window-parameters (mode-line-format . none)))))
+
+(add-to-list 'vertico-multiform-categories '(embark-keybinding grid))
+
+;; Consult users will also want the embark-consult package.
+(use-package embark-consult
+  :ensure t ; only need to install it, embark loads it after consult if found
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
+
+
 ;;; Completion at point
 ;;;; Corfu: Popup completion-at-point
 (use-package corfu
   :ensure t
+  :disabled
   :hook (after-init . global-corfu-mode)
   :bind (:map corfu-map
 	      ("<tab>" . corfu-complete))
