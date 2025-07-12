@@ -56,6 +56,12 @@ If the new path's directories does not exist, create them."
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'relative)
 
+;;;; move lines
+(use-package move-text
+  :ensure t
+  :config
+  (move-text-default-bindings))  ; binds M-up and M-down
+
 ;;;; which-key
 (use-package which-key
   :ensure nil
