@@ -164,6 +164,17 @@ If the new path's directories does not exist, create them."
   ;; Narrowing lets you restrict results to certain groups of candidates
   (setq consult-narrow-key "<"))
 
+
+;;;; wgrep
+(use-package wgrep
+  :ensure t
+  :commands wgrep-change-to-wgrep-mode
+  :config
+  ;; Optional: allow editing read-only buffers (like `grep`)
+  (setq wgrep-enable-key "e"))        ;; Default keybinding to enter wgrep mode
+
+
+
 ;;;; Embark
 (use-package embark
   :ensure t
@@ -380,9 +391,12 @@ If the new path's directories does not exist, create them."
 ;;;; Magit
 (use-package magit
   :ensure t)
-(put 'upcase-region 'disabled nil)
 
+;; za imati ispravan status u modeline.
+;; ugasiti ako bude opterećivalo cpu
+(setq auto-revert-check-vc-info t) 
 
 ;;;; Custom
 (require 'sk-daily)
 (define-key global-map (kbd "M-n") #'sk-daily-today)
+(put 'upcase-region 'disabled nil)
