@@ -112,4 +112,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --bash)"
+
 export PATH=$HOME/.local/bin:$PATH
