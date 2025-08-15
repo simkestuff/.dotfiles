@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (load custom-file :no-error-if-file-is-missing)
 
@@ -150,7 +151,6 @@ If the new path's directories does not exist, create them."
          ;; Searching
          ("M-s r" . consult-ripgrep)
          ("M-s l" . consult-line)       ; Alternative: rebind C-s to use
-         ("M-s s" . consult-line)       ; consult-line instead of isearch, bind
          ("M-s L" . consult-line-multi) ; isearch to M-s s
          ("M-s o" . consult-outline)
          ;; Isearch integration
@@ -314,7 +314,7 @@ If the new path's directories does not exist, create them."
 (use-package org
   :ensure nil
   :config
-  (customize-set-variable 'org-directory "~/org")
+  (customize-set-variable 'org-directory "~/Documents/org")
   (customize-set-variable 'org-default-notes-file (concat org-directory "/notes.org"))
   (global-set-key (kbd "C-c L") #'org-store-link)
   (global-set-key (kbd "C-c a") #'org-agenda)
@@ -334,7 +334,7 @@ If the new path's directories does not exist, create them."
 (use-package org-agenda
   :ensure nil
   :config
-  (customize-set-variable 'org-agenda-files (directory-files-recursively "~/org" "\\.org$")))
+  (customize-set-variable 'org-agenda-files (directory-files-recursively "~/Documents/org" "\\.org$")))
 
 (use-package org-capture
   :ensure nil

@@ -1,4 +1,4 @@
-;;; sk-daily.el --- daily journaling module
+;;; sk-daily.el --- daily journaling module  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;;
@@ -7,7 +7,7 @@
 
 ;;; Code:
 
-(defvar sk-daily-directory "~/org/daily/")
+(defvar sk-daily-directory "~/Documents/org/daily/")
 (defvar sk-daily-filename (expand-file-name (concat sk-daily-directory "%Y-%m-%d.org")))
 
 (defun sk-daily-extract-date-from-filename (filename)

@@ -14,13 +14,7 @@
      "/home/sinisa/org/pointers-on-pointers.org"
      "/home/sinisa/org/streams.org"
      "/home/sinisa/Dropbox/notes/org2025/daily/20250301"))
- '(package-selected-packages
-   '(clang-format corfu-terminal dired-subtree embark-consult
-		  evil-surround gruber-darker-theme key-chord
-		  kind-icon lsp-mode magit marginalia modus-themes
-		  move-text nerd-icons-completion nerd-icons-corfu
-		  nerd-icons-dired orderless org-appear org-journal
-		  trashed vertico wgrep)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
