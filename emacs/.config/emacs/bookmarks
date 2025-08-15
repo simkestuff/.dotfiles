@@ -1,0 +1,16 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("dotfiles" (filename . "~/.dotfiles/")
+  (front-context-string . "direnv\n  drwxr-x")
+  (rear-context-string . "96 May 31  2024 ") (position . 176)
+  (last-modified 26572 11741 888405 858000))
+("init.el" (filename . "~/.dotfiles/emacs/.config/emacs/init.el")
+ (front-context-string . "(setq custom-fil") (rear-context-string)
+ (position . 1) (last-modified 26562 62115 972685 596000))
+("org-capture-last-stored" (filename . "~/org/daily/2025-03-02.org")
+ (front-context-string . "* TODO ajde da d")
+ (rear-context-string . "IT\n\n\n* Journal\n\n") (position . 120)
+ (last-modified 26564 30157 875132 625000))
+)

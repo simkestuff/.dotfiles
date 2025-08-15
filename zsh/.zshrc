@@ -18,11 +18,14 @@ setopt SHARE_HISTORY
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+# set  emacs mode
+bindkey -e
+
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR=vim
 else
-  export EDITOR='nvim'
+  export EDITOR=nvim
 fi
 
 # Compilation flags
@@ -58,7 +61,8 @@ export PATH=$PATH:$HOME/go/bin
 # haskell
 [ -f "/home/sinisa/.ghcup/env" ] && source "/home/sinisa/.ghcup/env" # ghcup-env
 
-# bindkey -s "^f" "/usr/local/bin/tmux-sessionizer\n"
+# keybinding za pokretanje tmux-sessionizer
+bindkey -s "^p" "/usr/local/bin/tmux-sessionizer\n"
 
 # opam configuration
 [[ ! -r /home/sinisa/.opam/opam-init/init.zsh ]] || source /home/sinisa/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
@@ -99,3 +103,9 @@ source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+
+# zig
+export PATH=/opt/zig-linux-x86_64-0.13.0:$PATH
+
+# doom emacs
+export PATH=/home/sinisa/.config/emacs/bin/:$PATH

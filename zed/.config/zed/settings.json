@@ -29,5 +29,8 @@
     "inline_blame": {
       "enabled": false
     }
+  },
+  "terminal": {
+    "line_height": "standard"
   }
 }

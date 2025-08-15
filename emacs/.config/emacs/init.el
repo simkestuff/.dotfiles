@@ -77,7 +77,7 @@ If the new path's directories does not exist, create them."
 ;; "CommitMono"
 (let ((mono-spaced-font "Iosevka Nerd Font")
       (proportionately-spaced-font "Iosevka Nerd Font Propo"))
-  (set-face-attribute 'default nil :family mono-spaced-font :height 130)
+  (set-face-attribute 'default nil :family mono-spaced-font :height 140)
   (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.0)
   (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.0))
 
@@ -192,7 +192,7 @@ If the new path's directories does not exist, create them."
                  nil
                  (window-parameters (mode-line-format . none)))))
 
-(add-to-list 'vertico-multiform-categories '(embark-keybinding grid))
+;;(add-to-list 'vertico-multiform-categories '(embark-keybinding grid))
 
 ;; Consult users will also want the embark-consult package.
 (use-package embark-consult
@@ -276,6 +276,7 @@ If the new path's directories does not exist, create them."
 ;;; Evil
 (use-package evil
   :ensure t
+  :disabled
   :init
   (customize-set-variable 'evil-want-integration t)
   (customize-set-variable 'evil-want-keybinding nil)
@@ -297,11 +298,17 @@ If the new path's directories does not exist, create them."
 ;;;;; jj escape evil-insert-mode
 (use-package key-chord
   :ensure t
+  :disabled
   :config
   (setq key-chord-two-keys-delay 0.5)
   (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
   (key-chord-mode 1))
-  
+
+(use-package evil-surround
+  :ensure t
+  :disabled
+  :config
+  (global-evil-surround-mode 1))
 
 ;;; Org
 (use-package org
@@ -357,6 +364,7 @@ If the new path's directories does not exist, create them."
 
 ;;; lsp
 (use-package lsp-mode
+  :disabled
   :ensure t
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
@@ -364,9 +372,11 @@ If the new path's directories does not exist, create them."
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (c-mode . lsp)
          ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration))
+         ;;(lsp-mode . lsp-enable-which-key-integration)
+	 )
   :config
   (setq lsp-completion-provider :capf)
+  (setq lsp-enable-snippet nil)
   (setq lsp-modeline-diagnostics-scope :workspace)
   (setq lsp-headerline-breadcrumb-enable nil)
   :commands lsp)

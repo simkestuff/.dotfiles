@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/ ~/.config ~/projects ~/Documents/ ~/Documents/haskell-learn/ ~/Documents/go-learn/ ~/Documents/python-learn/ -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/ ~/.config ~/projects ~/Documents/ ~/Documents/c-learn/ ~/Documents/go-learn/ ~/Documents/python-learn/ -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then

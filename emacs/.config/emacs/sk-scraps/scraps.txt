@@ -1,0 +1,24 @@
+(use-package org-journal
+  :ensure t
+  :defer t
+  :init
+  ;; Change default prefix key; needs to be set before loading org-journal
+  (setq org-journal-prefix-key "C-c j ")
+  :config
+  (setq org-journal-dir "~/org/daily/")
+  (setq org-journal-date-prefix "#+title: Daily Note: ")
+  (setq org-journal-enable-agenda-integration t)
+  (setq org-journal-date-format "%d.%m.%Y"))
+
+(defun sk-org-journal-find-location ()
+  ;; place where new entry will be added.
+  (org-journal-new-entry t)
+  (goto-char (point-max)))
+
+(use-package org-capture
+  :ensure nil
+  :config
+  (setq org-capture-templates
+	'(("j" "Journal" plain
+	   (function  sk-org-journal-find-location)
+	   "** %(format-time-string org-journal-time-format)%?\n%iTrajanje: \n"  :jump-to-captured t :immediate-finish t))))
