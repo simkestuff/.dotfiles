@@ -1,0 +1,11 @@
+[Unit]
+Description=KMonad aplikacija sa konfiguracijom za das-keyboard
+
+[Service]
+Type=simple
+ExecStart=/home/sinisa/.local/bin/kmonad /home/sinisa/.config/kmonad/config-keyboard.kbd 
+KillMode=process
+
+[Install]
+WantedBy=default.target
+    

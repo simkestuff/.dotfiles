@@ -1,0 +1,10 @@
+[Unit]
+Description=Provjera da li je priključena vanjska tipkovnica
+
+[Path]
+PathExists=/dev/input/by-id/usb-Metadot_-_Das_Keyboard_Das_Keyboard-event-kbd
+Unit=kmonad-keyboard.service
+
+[Install]
+WantedBy=default.target
+    

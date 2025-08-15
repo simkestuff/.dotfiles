@@ -1,0 +1,11 @@
+[Unit]
+Description=KMonad aplikacija sa laptop konfiguracijom
+
+[Service]
+Type=simple
+ExecStart=/home/sinisa/.local/bin/kmonad /home/sinisa/.config/kmonad/config.kbd 
+KillMode=process
+
+[Install]
+WantedBy=default.target
+    
