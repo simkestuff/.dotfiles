@@ -159,7 +159,7 @@
         XX      XX       XX     XX      XX      XX     @que    @til     @lp     @rp     @at      XX     XX
 ;;   +-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+------+
 ;;   | lsft  |   <>  |   y   |   x   |   c   |   v   |   b   |   n   |   m   |   ,   |   .   |   -   |  rsft | 
-        XX              XX      XX      XX      XX       XX     XX     RA-q    @lab    @rab      -       XX
+        XX              XX      XX      XX      XX       XX     RA-q   @sla    @lab    @rab      -       XX
 ;;   +-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+------+
 ;;   | lctl  | meta  |  alt  |                          space                        | ralt  | meta  |  rctl | 
         XX      XX      XX                            @sym2-mod                          XX     XX       XX
