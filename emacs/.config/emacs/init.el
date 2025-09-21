@@ -415,6 +415,11 @@ If the new path's directories does not exist, create them."
 ;; ugasiti ako bude opterećivalo cpu
 (setq auto-revert-check-vc-info t) 
 
+
+;; vterm
+(use-package vterm
+    :ensure t)
+
 ;;;; Custom
 (require 'sk-daily)
 (define-key global-map (kbd "M-n") #'sk-daily-today)
