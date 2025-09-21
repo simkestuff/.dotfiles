@@ -402,6 +402,15 @@ If the new path's directories does not exist, create them."
 (use-package magit
   :ensure t)
 
+
+(use-package markdown-mode
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "pandoc")
+  :bind (:map markdown-mode-map
+         ("C-c C-e" . markdown-do)))
+
+
 ;; za imati ispravan status u modeline.
 ;; ugasiti ako bude opterećivalo cpu
 (setq auto-revert-check-vc-info t) 
