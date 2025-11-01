@@ -48,6 +48,11 @@ If the new path's directories does not exist, create them."
   :hook (after-init . delete-selection-mode))
 
 
+;;;; revert buffers when file was changed somewhere else
+(global-auto-revert-mode 1)
+;;;; same thing but for dired
+(setq global-auto-revert-non-file-buffers t)
+
 ;;;; highlight current line
 (global-hl-line-mode)
 ;;;; line is what is visible on screen
@@ -76,9 +81,9 @@ If the new path's directories does not exist, create them."
 ;; opcije :
 ;; "JetBrainsMono Nerd Font Mono"
 ;; "CommitMono"
-(let ((mono-spaced-font "Iosevka Nerd Font")
-      (proportionately-spaced-font "Iosevka Nerd Font Propo"))
-  (set-face-attribute 'default nil :family mono-spaced-font :height 140)
+(let ((mono-spaced-font "JetBrainsMono Nerd Font Mono")
+      (proportionately-spaced-font "JetBrainsMono Nerd Font Mono"))
+  (set-face-attribute 'default nil :family mono-spaced-font :height 130)
   (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.0)
   (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.0))
 
@@ -396,7 +401,7 @@ If the new path's directories does not exist, create them."
 (add-hook 'c-mode-hook #'sk-c-mode-hook)
 
 (setq c-default-style '((java-mode . "java") (awk-mode . "awk") (c-mode . "stroustrup") (other . "gnu")))
-
+(setq-default c-electric-flag nil)
 
 ;;;; Magit
 (use-package magit
@@ -418,7 +423,16 @@ If the new path's directories does not exist, create them."
 
 ;; vterm
 (use-package vterm
-    :ensure t)
+  :ensure t)
+
+
+;; ace-window
+(use-package ace-window
+  :ensure true
+  :config
+  (setq aw-dispatch-always nil)
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  :bind ("M-o" . ace-window))
 
 ;;;; Custom
 (require 'sk-daily)
