@@ -68,13 +68,6 @@ If the new path's directories does not exist, create them."
   :config
   (move-text-default-bindings))  ; binds M-up and M-down
 
-;;;; which-key
-(use-package which-key
-  :ensure nil
-  :disabled
-  :config
-  (which-key-mode))
-
 ;;; Tweak the looks of Emacs
 
 ;;;; Fonts
@@ -278,116 +271,6 @@ If the new path's directories does not exist, create them."
   (setq trashed-sort-key '("Date deleted" . t))
   (setq trashed-date-format "%Y-%m-%d %H:%M:%S"))
 
-;;; Evil
-(use-package evil
-  :ensure t
-  :disabled
-  :init
-  (customize-set-variable 'evil-want-integration t)
-  (customize-set-variable 'evil-want-keybinding nil)
-  (customize-set-variable 'evil-want-C-i-jump nil)
-  (customize-set-variable 'evil-want-C-u-scroll t)
-  (customize-set-variable 'evil-respect-visual-line-mode t)
-  (customize-set-variable 'evil-want-C-h-delete t)
-  (customize-set-variable 'evil-want-C-w-in-emacs-state t)
-  :config
-  (evil-mode 1)
-  ;; modes that starts in emacs mode instead of normal mode
-  (dolist (mode '(dired-mode
-		  compilation-mode
-		  ediff-mode
-		  calendar-mode
-		  Info-mode))
-    (evil-set-initial-state mode 'emacs)))
-
-;;;;; jj escape evil-insert-mode
-(use-package key-chord
-  :ensure t
-  :disabled
-  :config
-  (setq key-chord-two-keys-delay 0.5)
-  (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
-  (key-chord-mode 1))
-
-(use-package evil-surround
-  :ensure t
-  :disabled
-  :config
-  (global-evil-surround-mode 1))
-
-;;; Org
-(use-package org
-  :ensure nil
-  :config
-  (customize-set-variable 'org-directory "~/Documents/org")
-  (customize-set-variable 'org-default-notes-file (concat org-directory "/notes.org"))
-  (global-set-key (kbd "C-c L") #'org-store-link)
-  (global-set-key (kbd "C-c a") #'org-agenda)
-  (global-set-key (kbd "C-c c") #'org-capture)
-  ;; org-id
-  (require 'org-id)
-  (setq org-id-link-to-org-use-id 'create-if-interactive)
-  (customize-set-variable 'org-id-link-consider-parent-id t)
-  ;; misc
-  (customize-set-variable 'org-hide-leading-stars t) ; sakrij sve osim zadnjeg asteriksa
-  (customize-set-variable 'org-startup-indented t) ; uvuci tekst i poravnaj ga prema headline-u
-  (customize-set-variable 'org-image-actual-width nil) ; ne korisni stvarnu širinu slike
-  (customize-set-variable 'org-return-follows-link t) ; RET će slijediti link
-  (customize-set-variable 'org-log-into-drawer t)
-  (customize-set-variable 'org-hide-emphasis-markers t)) ; sakriva oznake za bold, italics i slično
-
-(use-package org-agenda
-  :ensure nil
-  :config
-  (customize-set-variable 'org-agenda-files (directory-files-recursively "~/Documents/org" "\\.org$")))
-
-(use-package org-capture
-  :ensure nil
-  :config
-  (setq org-capture-templates
-	'(("t" "Task" entry
-	   (file+headline "" "Tasks")
-	   "* TODO %?\n %U\n")
-	  ("s" "Subtopic entry"
-	   plain
-	   (function sk-meets-capture-target)
-	   "Podsjetnik za %^{Podsjetnik za}t\n%?"
-	   :empty-lines 1)
-	  ("d" "Daily Notes")
-	  ("dj" "Journal" entry
-	   (file+headline (lambda() (sk-daily-today-file)) "Journal")
-	   "** %?\nadded: %U\n" :empty-lines 1)
-	  ("ds" "ScratchPad" plain
-	   (file+headline (lambda() (sk-daily-today-file)) "ScratchPad")
-	   "%?" :empty-lines 1)
-	  )))
-
-(use-package org-appear
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook 'org-appear-mode))
-
-;;; lsp
-(use-package lsp-mode
-  :disabled
-  :ensure t
-  :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-  (setq lsp-keymap-prefix "C-c l")
-  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         (c-mode . lsp)
-         ;; if you want which-key integration
-         ;;(lsp-mode . lsp-enable-which-key-integration)
-	 )
-  :config
-  (setq lsp-completion-provider :capf)
-  (setq lsp-enable-snippet nil)
-  (setq lsp-modeline-diagnostics-scope :workspace)
-  (setq lsp-headerline-breadcrumb-enable nil)
-  :commands lsp)
-
-;;;; lsp tuning
-(setq read-process-output-max (* 1024 1024)) ;; 1mb
 
 ;;;;; clang-format on save
 (use-package clang-format
@@ -399,6 +282,9 @@ If the new path's directories does not exist, create them."
   (add-hook 'before-save-hook #'clang-format-buffer nil t))
 
 (add-hook 'c-mode-hook #'sk-c-mode-hook)
+(add-hook 'prog-mode-hook  #'hs-minor-mode)
+(with-eval-after-load 'hideshow
+  (define-key hs-minor-mode-map (kbd "C-<tab>") 'hs-toggle-hiding))
 
 (setq c-default-style '((java-mode . "java") (awk-mode . "awk") (c-mode . "stroustrup") (other . "gnu")))
 (setq-default c-electric-flag nil)
@@ -428,13 +314,9 @@ If the new path's directories does not exist, create them."
 
 ;; ace-window
 (use-package ace-window
-  :ensure true
+  :ensure t
   :config
   (setq aw-dispatch-always nil)
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :bind ("M-o" . ace-window))
 
-;;;; Custom
-(require 'sk-daily)
-(define-key global-map (kbd "M-n") #'sk-daily-today)
-(put 'upcase-region 'disabled nil)
